@@ -1,26 +1,31 @@
 var express                 = require("express"),
     passport                = require("passport"),
-    // env                     = require('dotenv'),
-    models                  = require("./models");
-    bodyParser              = require ("body-parser"),
+    env                     = require("dotenv"),
+    models                  = require("./models"),
+    bodyParser              = require("body-parser"),
     session                 = require('express-session'),
     User                    = require("./models/users"),
-    localStrategy           = require ("passport-local"),
+    localStrategy           = require("passport-local"),
     path                    = require("path"),
-    app                     = express();
+    exphbs                  = require("express-handlebars");
+
+var app = express();
+
 
 var PORT = process.env.PORT || 3000;
 
+app.set("view engine", "handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
-
-app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
  
 models.sequelize.sync().then(function() {
     console.log('Nice! Database looks fine')
