@@ -1,5 +1,6 @@
 var express                 = require("express"),
     passport                = require("passport"),
+    // env                     = require('dotenv'),
     models                  = require("./models");
     bodyParser              = require ("body-parser"),
     session                 = require('express-session'),
@@ -10,7 +11,6 @@ var express                 = require("express"),
 
 var PORT = process.env.PORT || 3000;
 
-require('dotenv');
 
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
 
@@ -21,6 +21,14 @@ app.use(bodyParser.json());
 
 app.use(passport.initialize());
 app.use(passport.session());
+ 
+models.sequelize.sync().then(function() {
+    console.log('Nice! Database looks fine')
+ 
+}).catch(function(err) {
+    console.log(err, "Something went wrong with the Database Update!")
+ 
+});
 
 
 app.get("/", function(req, res) {
