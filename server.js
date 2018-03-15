@@ -4,7 +4,6 @@ var express                 = require("express"),
     session                 = require('express-session'),
     bodyParser              = require("body-parser"),
     env                     = require("dotenv"),
-    User                    = require("./models/users"),
     localStrategy           = require("passport-local"),
     path                    = require("path"),
     exphbs                  = require("express-handlebars");
@@ -27,9 +26,9 @@ app.get("/", function(req, res) {
 });
 
 var models = require("./models");
-var authRoute = require("./routes/auth.js")(app);
-
-require('./config/passport/passport.js')(passport, models.users);
+var authRoute = require('./routes/auth.js')(app, passport);
+console.log(models);
+require('./config/passport/passport.js')(passport, models.User);
 
 models.sequelize.sync().then(function() {
     console.log('Nice! Database looks fine')
