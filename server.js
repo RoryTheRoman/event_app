@@ -1,5 +1,6 @@
 var express                 = require("express"),
     passport                = require("passport"),
+    models                  = require("./models");
     bodyParser              = require ("body-parser"),
     session                 = require('express-session'),
     User                    = require("./models/users"),
@@ -8,6 +9,8 @@ var express                 = require("express"),
     app                     = express();
 
 var PORT = process.env.PORT || 3000;
+
+require('dotenv');
 
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true}));
 
