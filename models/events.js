@@ -1,13 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
     var events = sequelize.define("events", {
-        // Giving the events model a name of type STRING
-        user_name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1, 20]
-            }
-        },
         event_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -33,8 +25,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     events.associate = function (models) {
-        // Associating events with guests
-        // When an Author is deleted, also delete any associated guests
         events.hasMany(models.guests, {
             onDelete: "cascade"
         });
