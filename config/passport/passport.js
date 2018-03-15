@@ -6,18 +6,13 @@ console.log("user");
 
  console.log(user);
     var User = user;
- 
     var LocalStrategy = require('passport-local').Strategy;
  
- 
     passport.use('local-signup', new LocalStrategy(
- 
         {
  
             usernameField: 'email',
- 
             passwordField: 'password',
- 
             passReqToCallback: true // allows us to pass back the entire request to the callback
  
         },
