@@ -23,6 +23,8 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
     "path": "^0.12.7",
-    "sequelize": "^4.36.0"
+    "sequelize": "^2.0.0-rc1",
+    "sequelize-cli": "^4.0.0",
+    "sqlite3": "^3.1.13"
   }
 }
