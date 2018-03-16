@@ -3,7 +3,7 @@ var bCrypt = require('bcrypt-nodejs');
 module.exports = function(passport, user) {
     var User = user;
     var LocalStrategy = require('passport-local').Strategy;
- 
+    
     passport.use('local-signup', new LocalStrategy(
         {
             usernameField: 'email',
@@ -89,6 +89,7 @@ module.exports = function(passport, user) {
                     });
                 }
                 var userinfo = user.get();
+                var name = user.firstname;
                 return done(null, userinfo);
      
             }).catch(function(err) {
@@ -99,6 +100,7 @@ module.exports = function(passport, user) {
             });     
         }
     ));
+
 }
 
 
