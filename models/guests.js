@@ -25,13 +25,13 @@ module.exports = function (sequelize, DataTypes) {
         });
     };
 
-    events.associate = function (models) {
-        // Associating events with guests
-        // When an Author is deleted, also delete any associated guests
-        events.hasMany(models.items, {
-            onDelete: "cascade"
-        });
-    };
+    // events.associate = function (models) {
+    //     // Associating events with guests
+    //     // When an Author is deleted, also delete any associated guests
+    //     events.hasMany(models.items, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     return guests;
 };
