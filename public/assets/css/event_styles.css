@@ -79,5 +79,17 @@ input[type="password"] {
     margin-bottom: 30px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+} 
+
+.homeContainer {
+    background: rgba(247, 245, 245, 0.7);
+    padding: 20px;
+    width: 75%;
+    height: 700px;
+    margin: 30px auto;
 }
-    
+
+.welcomeMessage {
+    float: right;
+    padding-top: 14px;
+}

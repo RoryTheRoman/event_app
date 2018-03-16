@@ -9,7 +9,11 @@ exports.signin = function(req, res) {
 }
 
 exports.home = function(req, res) {
-    res.render('home');
+    var first = req.user.firstname; 
+    var last = req.user.lastname;
+    console.log(first);
+    console.log(last);
+    res.render('home', {first: first, last: last});
 }
 
 exports.logout = function(req, res) {
