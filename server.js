@@ -29,13 +29,14 @@ var models = require("./models");
 var authRoute = require('./routes/auth.js')(app, passport);
 require('./config/passport/passport.js')(passport, models.user);
 
+app.use(express.static("public"));
+
 models.sequelize.sync().then(function() {
     console.log('Nice! Database looks fine')
  
 }).catch(function(err) {
     console.log(err, "Something went wrong with the Database Update!") 
 });
-
 
 app.listen(PORT, function() {
     console.log("Server listening on: http://localhost:" + PORT);
