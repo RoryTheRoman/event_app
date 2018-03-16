@@ -22,20 +22,18 @@ app.set("view engine", "handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
  
 app.get("/", function(req, res) {
-    res.send("index");
+    res.render("index");
 });
 
 var models = require("./models");
 var authRoute = require('./routes/auth.js')(app, passport);
-console.log(models);
 require('./config/passport/passport.js')(passport, models.user);
 
 models.sequelize.sync().then(function() {
     console.log('Nice! Database looks fine')
  
 }).catch(function(err) {
-    console.log(err, "Something went wrong with the Database Update!")
- 
+    console.log(err, "Something went wrong with the Database Update!") 
 });
 
 
