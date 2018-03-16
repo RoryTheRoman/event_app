@@ -47,6 +47,12 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: 'active'
         }
     });
+
+    User.associate = function (models) {
+        User.hasMany(models.events, {
+            onDelete: "cascade"
+        });
+    };
  
     return User;
  

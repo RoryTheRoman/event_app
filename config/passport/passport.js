@@ -78,6 +78,7 @@ module.exports = function(passport, user) {
                     email: email
                 }
             }).then(function(user) {
+
                 if (!user) {
                     return done(null, false, {
                         message: 'Email does not exist'
@@ -89,7 +90,6 @@ module.exports = function(passport, user) {
                     });
                 }
                 var userinfo = user.get();
-                var name = user.firstname;
                 return done(null, userinfo);
      
             }).catch(function(err) {
@@ -97,9 +97,14 @@ module.exports = function(passport, user) {
                 return done(null, false, {
                     message: 'Something went wrong with your Signin'
                 });
-            });     
+                console.log(userinfo);  
+
+            });   
         }
+
     ));
+
+
 
 }
 
