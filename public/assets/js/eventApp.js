@@ -1,14 +1,15 @@
 $(document).ready(function() {
 
     // Getting jQuery references of new event
-    var event_name = $("#ID OF EVENT NAME INPUT BOX");
-    var location = $("#ID OF EVENT LOCATION INPUT BOX");
-    var start_time = $("#ID OF EVENT START INPUT BOX");
-    var end_time = $("#ID OF EVENT END INPUT BOX");
-    var submit_form = $("#ID OF FORM");
+    var event_name = $("#event-name");
+    var event_date = $("#date");
+    var location = $("#location");
+    var start_time = $("#start-time");
+    var end_time = $("#end-time");
+    var create_event_form = $("#create-event-form");
 
     // Adding an event listener for when the form is submitted
-    $(submit_form).on("submit", handleFormSubmit);
+    $(create_event_form).on("submit", handleFormSubmit);
     // Gets the part of the url that comes after the "?" (which we have if we're updating a post)
     var url = window.location.search;
 
@@ -35,6 +36,9 @@ $(document).ready(function() {
       // Constructing a event object to hand to the database
       var newEvent = {
         event_name: event_name
+          .val()
+          .trim(),
+        event_date: event_date
           .val()
           .trim(),
         location: location
