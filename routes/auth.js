@@ -10,6 +10,9 @@ module.exports = function(app, passport) {
     ));
     app.get('/home', isLoggedIn, authController.home);
 
+    app.get('/event', isLoggedIn, authController.event);
+
+
     app.get('/logout', authController.logout);
     app.post('/signin', passport.authenticate('local-signin', {
             successRedirect: '/home',

@@ -1,3 +1,4 @@
+
 var express                 = require("express"),
     app                     = express(),
     passport                = require("passport"),
@@ -7,6 +8,7 @@ var express                 = require("express"),
     localStrategy           = require("passport-local"),
     path                    = require("path"),
     exphbs                  = require("express-handlebars");
+
 
 var PORT = process.env.PORT || 3000;
 
