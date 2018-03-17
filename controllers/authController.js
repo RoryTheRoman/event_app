@@ -8,6 +8,10 @@ exports.signin = function(req, res) {
     res.render('signin');
 }
 
+exports.event = function(req, res) {
+    res.render('event');
+}
+
 exports.home = function(req, res) {
     var first = req.user.firstname; 
     var last = req.user.lastname;

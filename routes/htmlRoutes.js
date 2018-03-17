@@ -8,7 +8,7 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../views/authenticated.handlebars"))
     });
 
-    app.get("/eventmaker", function (req, res) {
+    app.get("/create", function (req, res) {
         res.sendFile(path.join(__dirname, "../views/eventmaker.handlebars"))
     });
 

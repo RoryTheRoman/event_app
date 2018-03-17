@@ -40,10 +40,10 @@ $(document).ready(function() {
         location: location
           .val()
           .trim(),
-          start_time: start_time
+        start_time: start_time
           .val()
           .trim(),
-          end_time: end_time
+        end_time: end_time
           .val()
           .trim()
       };
