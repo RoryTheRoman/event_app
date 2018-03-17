@@ -21,16 +21,20 @@
 
 <div class="homeContainer">
 
-    <h1>Event Name HERE</h1> 
+    <h1>{{event_name}}</h1> 
 
     <div class="eventDisplayInfo">
-        <h3>Location: HERE</h3>
-        <h3>Data: HERE</h3>
-        <h3>Start Time: HERE</h3>
-        <h3>End Time: HERE</h3>
-    </div>
-
+        <h3>Location: {{location}}</h3>
+        <h3>Time: {{start_time}} - {{end_time}}</h3>
+        <h3>Guests:</h3>
+        <ul>
+        {{#each guests}}
+            <h3>{{guest_name}} : {{item_name}}</h3>
+        {{/each}}
+        </ul>
     </div>
 
 </div>
+
+
 
