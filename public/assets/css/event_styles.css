@@ -32,6 +32,7 @@ hr {
 h1 {
     font-weight: 700px;
     font-size: 5em;
+    margin-bottom: 20px;
 }
 
 .navbar {
@@ -41,7 +42,6 @@ h1 {
 .wrapper {	
 margin-top: 80px;
 margin-bottom: 80px;
-
 }
 
 .form-signin {
@@ -85,11 +85,16 @@ input[type="password"] {
     background: rgba(247, 245, 245, 0.7);
     padding: 20px;
     width: 75%;
-    height: 700px;
     margin: 30px auto;
 }
 
 .welcomeMessage {
     float: right;
     padding-top: 14px;
+}
+
+.create-event {
+    width: 50%;
+    margin: 0 auto;
+    padding: 1px 20px 20px 20px;
 }
