@@ -4,16 +4,20 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../views/index.handlebars"))
     });
 
-    app.get("/authenticated", function (req, res) {
-        res.sendFile(path.join(__dirname, "../views/authenticated.handlebars"))
+    app.get("/signin", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/signin.handlebars"))
     });
 
-    app.get("/eventmaker", function (req, res) {
-        res.sendFile(path.join(__dirname, "../views/eventmaker.handlebars"))
+    app.get("/signup", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/signup.handlebars"))
     });
 
-    app.get("/events-all", function (req, res) {
-        res.sendFile(path.join(__dirname, "../views/events-all.handlebars"))
+    app.get("/create", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/create.handlebars"))
+    });
+
+    app.get("/home", function (req, res) {
+        res.sendFile(path.join(__dirname, "../views/home.handlebars"))
     });
 
 
