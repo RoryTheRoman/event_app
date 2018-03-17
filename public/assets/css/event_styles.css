@@ -97,6 +97,7 @@ input[type="password"] {
 .welcomeMessage {
     float: right;
     padding-top: 14px;
+    color: white;
 }
 
 .create-event {
