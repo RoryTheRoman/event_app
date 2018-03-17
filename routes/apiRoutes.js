@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function (app) {
 
     //GET route for all events should we choose to use it:
-    app.get("/api/events/", function (req, res) {
+    app.get("/api/events", function (req, res) {
         db.events.findAll({}).then(function (dbevents) {
             res.json(dbevents);
         });
