@@ -50,6 +50,17 @@
     </div>
 
 
+    <div class="listevents">
+        <h1>Events:</h1>
+        {{#each events}}
+        <div>
+            <ul>
+                <h2>{{event_name}}</h2>
+                <button class="btn btn-success gobtn" data-id="{{this.id}}">GO</button>
+            </ul>
+        </div>
+        {{/each}}
+    </div>
 
 
 
