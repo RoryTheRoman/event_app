@@ -14,12 +14,16 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1, 50]
             }
         },
-        start_time: {
+        event_date: {
             type: DataTypes.DATE,
             allowNull: false,
         },
+        start_time: {
+            type: DataTypes.TIME,
+            allowNull: false,
+        },
         end_time: {
-            type: DataTypes.DATE,
+            type: DataTypes.TIME,
             allowNull: false,
         }
     });
