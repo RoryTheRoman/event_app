@@ -14,6 +14,7 @@ module.exports = function (app) {
         db.events.create({
             event_name: req.body.event_name,
             location: req.body.location,
+            event_date: req.body.event_name,
             start_time: req.body.start_time,
             end_time: req.body.end_time
         })
