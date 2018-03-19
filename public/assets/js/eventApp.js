@@ -82,27 +82,27 @@ $(document).ready(function() {
       });
     }
   });
-$("#create-event-form").on("submit", function (event) {
-  // Make sure to preventDefault on a submit event.
-  event.preventDefault();
+// $("#create-event-form").on("submit", function (event) {
+//   // Make sure to preventDefault on a submit event.
+//   event.preventDefault();
 
-  var newEvent = {
-    event_name: $("#event_name").val().trim(),
-    event_date: $("#date").val().trim(),
-    location: $("#location").val().trim(),
-    start_time: $("#start-time").val().trim(),
-    end_time: $("#end-time").val().trim()
-  };
+//   var newEvent = {
+//     event_name: $("#event_name").val().trim(),
+//     event_date: $("#date").val().trim(),
+//     location: $("#location").val().trim(),
+//     start_time: $("#start-time").val().trim(),
+//     end_time: $("#end-time").val().trim()
+//   };
 
-  // Send the POST request.
-  $.ajax("/api/events", {
-    type: "POST",
-    data: newEvent
-  }).then(
-    function () {
-      console.log("created a new event!");
-      // Reload the page to get the updated list
-      location.reload();
-    }
-  );
-});
+//   // Send the POST request.
+//   $.ajax("/api/events", {
+//     type: "POST",
+//     data: newEvent
+//   }).then(
+//     function () {
+//       console.log("created a new event!");
+//       // Reload the page to get the updated list
+//       location.reload();
+//     }
+//   );
+// });
