@@ -33,7 +33,7 @@ $(document).ready(function () {
       function () {
         console.log("created new event");
         // Reload the page to get the updated list
-        window.location.href = "/events";
+        window.location.href = "/home";
       }
     );
   });
