@@ -33,53 +33,54 @@ $(document).ready(function () {
       function () {
         console.log("created new event");
         // Reload the page to get the updated list
-        window.location.href = "/events";
+        window.location.href = "/home";
       }
     );
   });
 
   //on click function for updating an event
-  $("#update-event").on("click", function (event) {
-    var id = $(".event-name").text();
+  // $("#update-event").on("click", function (event) {
+  //   var id = $(".event-name").text();
 
-    event.preventDefault();
+  //   event.preventDefault();
 
-    // Getting jQuery references of new event
-    var event_name = $("#event-name");
-    var event_date = $("#date");
-    var location = $("#location");
-    var start_time = $("#start-time");
-    var end_time = $("#end-time");
+  //   // Getting jQuery references of new event
+  //   var event_name = $("#event-name");
+  //   var event_date = $("#date");
+  //   var location = $("#location");
+  //   var start_time = $("#start-time");
+  //   var end_time = $("#end-time");
 
-    // Constructing a event object to hand to the database
-    var updatedEvent = {
-      event_name: event_name
-        .val()
-        .trim(),
-      event_date: event_date
-        .val()
-        .trim(),
-      location: location
-        .val()
-        .trim(),
-      start_time: start_time
-        .val()
-        .trim(),
-      end_time: end_time
-        .val()
-        .trim()
-    };
+  //   // Constructing a event object to hand to the database
+  //   var updatedEvent = {
+  //     event_name: event_name
+  //       .val()
+  //       .trim(),
+  //     event_date: event_date
+  //       .val()
+  //       .trim(),
+  //     location: location
+  //       .val()
+  //       .trim(),
+  //     start_time: start_time
+  //       .val()
+  //       .trim(),
+  //     end_time: end_time
+  //       .val()
+  //       .trim()
+  //   };
 
-    // Send the PUT request.
-    $.ajax("/api/events/" + id, {
-      type: "PUT",
-      data: updatedEvent
-    }).then(
-      function () {
-        console.log("updated event");
-        // Reload the page to get the updated list
-        window.location.href = "/events";
-      })
-    });
+  //   // Send the PUT request.
+  //   $.ajax("/api/events/" + id, {
+  //     type: "PUT",
+  //     data: updatedEvent
+  //   }).then(
+  //     function () {
+  //       console.log("updated event");
+  //       // Reload the page to get the updated list
+  //       window.location.href = "/events";
+  //     })
+  //   });
+
 
   });

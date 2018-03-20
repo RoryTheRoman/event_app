@@ -9,23 +9,55 @@ exports.signin = function (req, res) {
     res.render('signin');
 }
 
-exports.event = function (req, res) {
-    res.render('event', { first: first, last: last, user_id: user_id });
+exports.oneEvent = function (req, res) {
+    var idEvent = req.params.id;
+    db.events.findOne({
+        where: {
+            id: idEvent
+        }
+    }).then(function (data) {
+        var event = data;
+        console.log(event);
+        res.render('events', { first: first, last: last, event: event});
+    });
 }
 
 exports.home = function (req, res) {
     var first = req.user.firstname;
     var last = req.user.lastname;
     var user_id = req.user.id;
-    db.events.findAll({}).then(function (dbevents) {
-        console.log("runnningesiogndfndf");
-        //res.json(dbevents);
-
+    db.events.findAll({})
+    .then(function (dbevents) {
         var events = dbevents;
-        console.log(first);
-        console.log(last);
-        console.log(user_id);
-        console.log(events);
+        res.render('home', { first: first, last: last, user_id: user_id, events: events});
+    });
+}
+
+// exports.events = function (req, res) {
+//     console.log("lookkkkkkkk");
+//     console.log(req.events.id);
+//     var first = req.user.firstname;
+//     console.log(first);
+//     var last = req.user.lastname;
+//     var user_id = req.user.id;
+
+//     db.events.findAll({
+
+//     }).then(function (dbevents) {
+//         var events = dbevents;
+//         res.render('events', { first: first, last: last, user_id: user_id, events: events});
+//     });
+
+
+//     res.render('events', { first: first, last: last, user_id: user_id });
+// }
+
+exports.home = function (req, res) {
+    var first = req.user.firstname;
+    var last = req.user.lastname;
+    var user_id = req.user.id;
+    db.events.findAll({}).then(function (dbevents) {
+        var events = dbevents;
         res.render('home', { first: first, last: last, user_id: user_id, events: events});
     });
 }

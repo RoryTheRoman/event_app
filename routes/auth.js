@@ -10,7 +10,9 @@ module.exports = function(app, passport) {
     ));
     app.get('/home', isLoggedIn, authController.home);
 
-    app.get('/event', isLoggedIn, authController.event);
+    // app.get('/events', isLoggedIn, authController.events);
+
+    app.get('/events/:id', isLoggedIn, authController.oneEvent);
 
 
     app.get('/logout', authController.logout);

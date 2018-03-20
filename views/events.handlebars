@@ -20,21 +20,29 @@
 </nav>
 
 <div class="homeContainer">
-
-    <h1>{{event_name}}</h1> 
-
     <div class="eventDisplayInfo">
-        <h3>Location: {{location}}</h3>
-        <h3>Time: {{start_time}} - {{end_time}}</h3>
-        <h3>Guests:</h3>
-        <ul>
+      
+        <h1>{{event.event_name}}</h1> 
+        <h3>Location: {{event.location}}</h3>
+        <h3>Date: {{event.event_date}}</h3>
+        <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
+
+        {{!-- <ul>
         {{#each guests}}
             <h3>{{guest_name}} : {{item_name}}</h3>
         {{/each}}
-        </ul>
+        </ul> --}}
+
     </div>
+    
+    <a href="/home"><button class="btn btn-lg home">Home</button></a>
 
 </div>
+
+
+
+
+
 
 
 
