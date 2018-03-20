@@ -39,7 +39,7 @@ $(document).ready(function () {
       function () {
         console.log("created new event");
         // Reload the page to get the updated list
-        location.reload();
+        window.location.href = "/events";
       }
     );
   });
