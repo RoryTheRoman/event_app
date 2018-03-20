@@ -14,18 +14,16 @@
                 <li><a href="/home">Home</a></li>
                 <li><a href="/logout">Log Out</a></li>
             </ul>
-            <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span><p class="welcomeMessage" id="user_id">{{user_id}}</p>
-        </div>
+    <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span><p class="welcomeMessage" id="user_id">{{user_id}}</p>
     </div>
 </nav>
 
-
 <div class="homeContainer">
-    <h1>Home Page:</h1>
-
+    
+<button class="btn btn-lg btn-primary btn-block eventButton" id="eventButtonText">Create Event</button>
 
 <div id="inputDIV" style="display:none" class="create-event hidden">
-        <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/api/events">       
+        <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
             <h2 class="form-event-heading">Input Event Information</h2>
             <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
             <input type="text" class="form-control" id="event_name" name="event-name" placeholder="Name of Event" required="" autofocus="" />
@@ -42,13 +40,13 @@
             <label for="type-Event"><h5>What is the end time of the event?</h5></label>
             <input type="time" class="form-control" id="end-time" placeholder="End Time" required="" autofocus="" />
      
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="create-event-form">Submit Event</button>   
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit Event</button>   
         </form>
     </div>
 
 <button class="btn btn-lg btn-primary btn-block eventButton" id="viewEvents">View Events</button>
 
-    <div class="listevents">
+    <div id="eventsDIV" style="display:none" class="listevents hidden">
         <h1>Events:</h1>
         {{#each events}}
         <div>
@@ -59,7 +57,6 @@
         </div>
         {{/each}}
     </div>
-</div>
 
 <script>
 $('#eventButtonText').on('click', function() {
@@ -73,9 +70,9 @@ $('#eventButtonText').on('click', function() {
     $('#inputDIV').css('display', 'none');
   $('#inputDIV').removeClass('show');
     $('#inputDIV').addClass('hidden');     
-   } 
+   }
+    
 });
-
 $('#viewEvents').on('click', function() {
   if($('#eventsDIV').hasClass('hidden')) {
      $(this).html("Hide Events List");
@@ -87,10 +84,9 @@ $('#viewEvents').on('click', function() {
     $('#eventsDIV').css('display', 'none');
   $('#eventsDIV').removeClass('show');
     $('#eventsDIV').addClass('hidden');     
-   }   
+   }
+    
 });
 </script>
 
-
-
-        
+</div>
