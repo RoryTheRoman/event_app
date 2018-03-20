@@ -24,42 +24,6 @@
     
 <button class="btn btn-lg btn-primary btn-block eventButton" id="eventButtonText">Create Event</button>
 
-<button class="btn btn-lg btn-primary btn-block eventButton" id="viewEvents">View Events</button>
-
-<script>
-
-
-
-$('#eventButtonText').on('click', function() {
-  if($('#inputDIV').hasClass('hidden')) {
-     $(this).html("Hide Create Form");
-    $('#inputDIV').css('display', 'block');
-    $('#inputDIV').removeClass('hidden');
-    $('#inputDIV').addClass('show');
-     } else {
-     $(this).html("Create Form");
-    $('#inputDIV').css('display', 'none');
-  $('#inputDIV').removeClass('show');
-    $('#inputDIV').addClass('hidden');     
-   }
-    
-});
-
-$('#viewEvents').on('click', function() {
-  if($('#eventsDIV').hasClass('hidden')) {
-     $(this).html("Hide Events List");
-    $('#eventsDIV').css('display', 'block');
-    $('#eventsDIV').removeClass('hidden');
-    $('#eventsDIV').addClass('show');
-     } else {
-     $(this).html("View Events");
-    $('#eventsDIV').css('display', 'none');
-  $('#eventsDIV').removeClass('show');
-    $('#eventsDIV').addClass('hidden');     
-   }
-    
-});
-</script>
 
 <div id="inputDIV" style="display:none" class="create-event hidden">
         <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
@@ -83,6 +47,7 @@ $('#viewEvents').on('click', function() {
         </form>
     </div>
 
+<button class="btn btn-lg btn-primary btn-block eventButton" id="viewEvents">View Events</button>
 
 
     <div id="eventsDIV" style="display:none" class="listevents hidden">
@@ -101,7 +66,35 @@ $('#viewEvents').on('click', function() {
 
 </div>
 
+<script>
+$('#eventButtonText').on('click', function() {
+  if($('#inputDIV').hasClass('hidden')) {
+     $(this).html("Hide Create Form");
+    $('#inputDIV').css('display', 'block');
+    $('#inputDIV').removeClass('hidden');
+    $('#inputDIV').addClass('show');
+     } else {
+     $(this).html("Create Form");
+    $('#inputDIV').css('display', 'none');
+  $('#inputDIV').removeClass('show');
+    $('#inputDIV').addClass('hidden');     
+   } 
+});
 
+$('#viewEvents').on('click', function() {
+  if($('#eventsDIV').hasClass('hidden')) {
+     $(this).html("Hide Events List");
+    $('#eventsDIV').css('display', 'block');
+    $('#eventsDIV').removeClass('hidden');
+    $('#eventsDIV').addClass('show');
+     } else {
+     $(this).html("View Events");
+    $('#eventsDIV').css('display', 'none');
+  $('#eventsDIV').removeClass('show');
+    $('#eventsDIV').addClass('hidden');     
+   }   
+});
+</script>
 
 
 
