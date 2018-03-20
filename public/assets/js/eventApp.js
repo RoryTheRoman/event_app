@@ -70,6 +70,12 @@ $(document).ready(function() {
       });
     }
   
+    // eventButton reveals form
+    $("button").click(function(){
+        $("#inputDIV").show(1500);
+    });
+   
+    
     // Update a given post, bring user to the blog page when done
     function updateEvent(post) {
       $.ajax({

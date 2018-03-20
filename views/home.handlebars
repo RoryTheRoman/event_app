@@ -22,12 +22,22 @@
 
 <div class="homeContainer">
     <h1>Home Page:</h1>
+    <button class="btn btn-lg btn-primary btn-block eventButton" type="submit">Submit Event</button> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".eventButton").click(function(){
+        $("#inputDIV").show(1500);
+    });
+});
+</script>
+
+ 
+{{!-- <button>show</button> --}}
 
 
-
-
-
-    <div class="create-event">
+    <div hidden id="inputDIV" class="create-event">
         <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
             <h2 class="form-event-heading">Input Event Information</h2>
             <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
