@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // Getting jQuery references of new event
-    var event_name = $("#event-name");
+    var event_name = $("#event_name");
     var event_date = $("#date");
     var location = $("#location");
     var start_time = $("#start-time");
