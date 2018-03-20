@@ -1,16 +1,18 @@
 var db = require("../models");
+var authController = require('../controllers/authController.js');
 
 module.exports = function (app) {
 
     //POST route for saving an event:
     app.post("/api/events", function (req, res) {
-        // console.log(req.body);
+        console.log(req.body);
         db.events.create({
             event_name: req.body.event_name,
             location: req.body.location,
             event_date: req.body.event_date,
             start_time: req.body.start_time,
-            end_time: req.body.end_time
+            end_time: req.body.end_time,
+            userId: req.body.userId
         })
             .then(function (dbevents) {
                 res.json(dbevents);
@@ -18,8 +20,9 @@ module.exports = function (app) {
     });
 
     //GET route for all events should we choose to use it:
-    app.get("/api/events", function (req, res) {
+    app.get("/events", function (req, res) {
         db.events.findAll({}).then(function (dbevents) {
+            console.log("runnningesiogndfndf");
             res.json(dbevents);
         });
     });
