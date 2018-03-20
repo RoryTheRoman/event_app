@@ -18,29 +18,6 @@ module.exports = function (app) {
             });
     });
 
-    // app.get("/events/:id", function (req, res) {
-    //     var idEvent = req.params.id;
-    //     db.events.findAll({
-    //         where: {
-    //             id: idEvent
-    //         }
-    //     }).then(function (data) {
-    //         console.log("THISSSSSSS");
-    //         console.log(data[0]);
-    //         res.render("events", data[0]);
-    //     });
-    // });
-
-
-
-
-    //GET route for events and attendees and items:
-    // app.get("/api/guests", function (req, res) {
-    //     db.guests.findAll({}).then(function (dbguests) {
-    //         res.json(dbguests);
-    //     });
-
-    // });
     // //POST route for saving guest information:
     // app.post("/api/guests", function (req, res) {
     //     // console.log(req.body);

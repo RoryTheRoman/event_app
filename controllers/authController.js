@@ -18,16 +18,16 @@ exports.oneEvent = function (req, res) {
     }).then(function (data) {
         var event = data;
         console.log(event);
-        res.render('events', {event: event});
+        res.render('events', { first: first, last: last, event: event});
     });
 }
-
 
 exports.home = function (req, res) {
     var first = req.user.firstname;
     var last = req.user.lastname;
     var user_id = req.user.id;
-    db.events.findAll({}).then(function (dbevents) {
+    db.events.findAll({})
+    .then(function (dbevents) {
         var events = dbevents;
         res.render('home', { first: first, last: last, user_id: user_id, events: events});
     });
