@@ -23,8 +23,7 @@
     <div class="listEvents">
         <ul>    
             {{#each events}}
-                <h3>{{this.event_name}}</h3>
-                <a href="/events/{{this.id}}"><button class="btn btn-success gobtn">GO</button></a>
+                <h3>{{this.event_name}}</h3><span><a href="/events/{{this.id}}"><button class="btn btn-success gobtn">GO</button></a></span>
             {{else}}
                 <p>You have no events yet. Please click the button below to create one!</p>
  

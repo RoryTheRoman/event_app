@@ -10,6 +10,8 @@ exports.signin = function (req, res) {
 }
 
 exports.oneEvent = function (req, res) {
+    var first = req.user.firstname;
+    var last = req.user.lastname;
     var idEvent = req.params.id;
     db.events.findOne({
         where: {
