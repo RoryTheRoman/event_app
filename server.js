@@ -7,10 +7,20 @@ var express                 = require("express"),
     env                     = require("dotenv"),
     localStrategy           = require("passport-local"),
     path                    = require("path"),
-    exphbs                  = require("express-handlebars");
+    exphbs                  = require("express-handlebars"),
+    moment                  = require("moment");
 
 
 var PORT = process.env.PORT || 3000;
+
+var hbs = exphbs.create({
+    defaultLayout: "main",
+    helpers: {
+        formatDate: function (date, format) {
+            return moment(date).format(format);
+        }
+    }
+})
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -21,7 +31,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set("view engine", "handlebars");
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.engine("handlebars", hbs.engine);
+
+// momentHandler.registerHelpers(exphbs);
  
 app.get("/", function(req, res) {
     res.render("index");

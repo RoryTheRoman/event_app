@@ -19,41 +19,68 @@
 </nav>
 
 <div class="homeContainer">
-    <h2>Your Events</h2>
-    <div class="listEvents">
-        <ul>    
-            {{#each events}}
-                <h3>{{this.event_name}}</h3><span><a href="/events/{{this.id}}"><button class="btn btn-success gobtn">GO</button></a></span>
-            {{else}}
-                <p>You have no events yet. Please click the button below to create one!</p>
- 
-            {{/each}}
-        </ul>
-    </div>
+
+<div class="homeWrapper">
+    <div>
+        <h2>Your Events</h2>
+        <div class="listEvents">
+            <ul>    
+                {{#each events}}
+                    <li>
+                        <h3 class="name">{{this.event_name}}</h3>
+                        <p class="date">{{formatDate this.event_date "MM/DD/YYYY"}} </p>
+                        <a href="/events/{{this.id}}"><p class="gobtn"> DETAILS >> </p></a>
+                    </li>
+                {{else}}
+                    <p>You have no events yet. Please click the button below to create one!</p>
     
-    <button class="btn btn-lg eventButton" id="eventButtonText">Create Event</button>
-
-    <div id="inputDIV" style="display:none" class="create-event hidden">
-        <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
-            <h2 class="form-event-heading">Event Information</h2>
-            <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
-            <input type="text" class="form-control" id="event_name" name="event-name" placeholder="Name of Event" required="" autofocus="" />
-            
-            <label for="type-Event"><h5>What is the date of the event?</h5></label>
-            <input type="date" class="form-control" id="date" name="date" placeholder="Date" required="" autofocus="" />
-            
-            <label for="type-Event"><h5>What is the location of the event?</h5></label>
-            <input type="text" class="form-control" id="location" name="location" placeholder="Location" required="" autofocus="" />
-
-            <label for="type-Event"><h5>What is the start time of the event?</h5></label>
-            <input type="time" class="form-control" id="start-time" name="time" placeholder="Start Time" required="" autofocus="" />
-
-            <label for="type-Event"><h5>What is the end time of the event?</h5></label>
-            <input type="time" class="form-control" id="end-time" placeholder="End Time" required="" autofocus="" />
-     
-            <button class="btn btn-lg submitButton" type="submit">Submit Event</button>   
-        </form>
+                {{/each}}
+            </ul>
+        </div>
     </div>
+
+    
+    
+    
+    <div>
+        
+    </div>
+
+    
+    
+    
+    <div>
+        <button class="btn btn-lg eventButton" id="eventButtonText">Create Event</button>
+
+        <div id="inputDIV" style="display:none" class="create-event hidden">
+            <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
+                <h2 class="form-event-heading">Event Information</h2>
+                <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
+                <input type="text" class="form-control" id="event_name" name="event-name" placeholder="Name of Event" required="" autofocus="" />
+                
+                <label for="type-Event"><h5>What is the date of the event?</h5></label>
+                <input type="date" class="form-control" id="date" name="date" placeholder="Date" required="" autofocus="" />
+                
+                <label for="type-Event"><h5>What is the location of the event?</h5></label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Location" required="" autofocus="" />
+
+                <label for="type-Event"><h5>What is the start time of the event?</h5></label>
+                <input type="time" class="form-control" id="start-time" name="time" placeholder="Start Time" required="" autofocus="" />
+
+                <label for="type-Event"><h5>What is the end time of the event?</h5></label>
+                <input type="time" class="form-control" id="end-time" placeholder="End Time" required="" autofocus="" />
+        
+                <button class="btn btn-lg submitButton" type="submit">Submit Event</button>   
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+
+    
+
 
 <script>
 $('#eventButtonText').on('click', function() {

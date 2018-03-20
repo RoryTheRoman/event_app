@@ -161,3 +161,22 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Arvo', serif;
   }
 
+.homeWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    border-bottom: 2px solid black;
+}
+
+.date {
+    font-size: 10px;
+}
