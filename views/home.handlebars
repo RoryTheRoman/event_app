@@ -21,23 +21,47 @@
 
 
 <div class="homeContainer">
-    <h1>Home Page:</h1>
-    <button class="btn btn-lg btn-primary btn-block eventButton" type="submit">Create Event</button> 
+    
+<button class="btn btn-lg btn-primary btn-block eventButton" id="eventButtonText">Create Event</button>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<button class="btn btn-lg btn-primary btn-block eventButton" id="viewEvents">View Events</button>
+
 <script>
-$(document).ready(function(){
-    $(".eventButton").click(function(){
-        $("#inputDIV").show(1500);
-    });
+
+
+
+$('#eventButtonText').on('click', function() {
+  if($('#inputDIV').hasClass('hidden')) {
+     $(this).html("Hide Create Form");
+    $('#inputDIV').css('display', 'block');
+    $('#inputDIV').removeClass('hidden');
+    $('#inputDIV').addClass('show');
+     } else {
+     $(this).html("Create Form");
+    $('#inputDIV').css('display', 'none');
+  $('#inputDIV').removeClass('show');
+    $('#inputDIV').addClass('hidden');     
+   }
+    
+});
+
+$('#viewEvents').on('click', function() {
+  if($('#eventsDIV').hasClass('hidden')) {
+     $(this).html("Hide Events List");
+    $('#eventsDIV').css('display', 'block');
+    $('#eventsDIV').removeClass('hidden');
+    $('#eventsDIV').addClass('show');
+     } else {
+     $(this).html("View Events");
+    $('#eventsDIV').css('display', 'none');
+  $('#eventsDIV').removeClass('show');
+    $('#eventsDIV').addClass('hidden');     
+   }
+    
 });
 </script>
 
- 
-{{!-- <button>show</button> --}}
-
-
-    <div hidden id="inputDIV" class="create-event">
+<div id="inputDIV" style="display:none" class="create-event hidden">
         <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
             <h2 class="form-event-heading">Input Event Information</h2>
             <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
@@ -60,7 +84,8 @@ $(document).ready(function(){
     </div>
 
 
-    <div class="listevents">
+
+    <div id="eventsDIV" style="display:none" class="listevents hidden">
         <h1>Events:</h1>
         {{#each events}}
         <div>
