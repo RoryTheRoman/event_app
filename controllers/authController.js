@@ -9,6 +9,13 @@ exports.signin = function (req, res) {
     res.render('signin');
 }
 
+exports.create = function (req, res) {
+    var first = req.user.firstname;
+    var last = req.user.lastname;
+    var user_id = req.user.id;
+    res.render('create', { first: first, last: last, user_id: user_id});
+}
+
 exports.oneEvent = function (req, res) {
     var first = req.user.firstname;
     var last = req.user.lastname;
@@ -20,7 +27,7 @@ exports.oneEvent = function (req, res) {
     }).then(function (data) {
         var event = data;
         console.log(event);
-        res.render('events', { first: first, last: last, event: event});
+        res.render('events', {first: first, last: last, event: event});
     });
 }
 

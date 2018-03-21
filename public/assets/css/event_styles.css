@@ -96,7 +96,7 @@ input[type="password"] {
 } 
 
 .homeContainer {
-    background: rgba(247, 245, 245, 0.7);
+    background: rgba(247, 245, 245, 0.85);
     padding: 20px;
     width: 75%;
     margin: 30px auto;
@@ -109,7 +109,7 @@ input[type="password"] {
 }
 
 .eventButton {
-    width: 18%;
+    width: 100%;
     margin: 2% auto;
     background-color: #00c4d5;
     color: white;
@@ -121,8 +121,8 @@ input[type="password"] {
 }
 
 .submitButton {
-    width: 32%;
-    margin: 10% auto 0 auto;
+    width: 50%;
+    margin: 2% auto 0 auto;
     background-color: #337ab7;
     color: white;
 }
@@ -143,7 +143,7 @@ input[type="password"] {
 }
 
 .create-event {
-    width: 50%;
+    width: 90%;
     margin: 0 auto;
     padding: 1px 20px 20px 20px;
 }
@@ -152,31 +152,51 @@ input[type="password"] {
     color: white;
 }
 
-.listEvents {
-    margin: 20px;
-    font-size: 1.7em;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Arvo', serif;
   }
 
 .homeWrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 35% 50% 15%;
     text-align: left;
 }
 
-ul {
+ul.eventsUl{
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-li {
+.eventsUl li{
     border-bottom: 2px solid black;
+    padding-bottom: 8px;
 }
 
 .date {
-    font-size: 10px;
+    font-size: 14px;
+}
+
+.gobtn {
+    font-size: 15px; 
+    text-align: right;
+    color: #FF4081;
+}
+
+.name {
+    margin-bottom: 3px;
+    color: #FF8CB3;
+}
+
+h2 {
+    color: #7F2040;
+}
+
+.create {
+    justify-self: center;
+    text-align: center;
+}
+
+.home {
+    margin-top: 20px;
 }

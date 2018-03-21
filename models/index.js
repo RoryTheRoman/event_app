@@ -9,7 +9,6 @@ var config = require(path.join(__dirname, '..', 'config', 'config.json'))[env];
 var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db = {};
 
-
 var express= require("express");
 var app= express();
 var bodyParser= require("body-parser");
