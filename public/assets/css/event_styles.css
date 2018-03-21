@@ -89,6 +89,10 @@ input {
     border-bottom-right-radius: 0;
 }
 
+#user_id {
+    color: #abaaa2;
+}
+
 input[type="password"] {
     margin-bottom: 30px;
     border-top-left-radius: 0;
@@ -133,13 +137,13 @@ input[type="password"] {
 }
 
 .LogInBtn, .signUpBtn{
-    background-color: #00c4d5;
+    background-color: #337ab7;
     color: white;
 }
 
 .LogInBtn:hover, .signUpBtn:hover{
     background-color: white;
-    color: #00c4d5;
+    color: #337ab7;
 }
 
 .create-event {
@@ -217,4 +221,12 @@ a {
 
 h2.eventsList {
     margin-top: 0px;
+}
+
+.col-lg-12 {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
 }
