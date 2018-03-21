@@ -43,7 +43,6 @@ exports.home = function (req, res) {
 }
 
 // exports.events = function (req, res) {
-//     console.log("lookkkkkkkk");
 //     console.log(req.events.id);
 //     var first = req.user.firstname;
 //     console.log(first);

@@ -219,7 +219,7 @@ a {
     color: #FF4081;
 }
 
-.gobtn:hover {
+.gobtn:hover, .guestbtn:hover {
     text-decoration: none;
     color: black;
 }
@@ -242,4 +242,10 @@ h2.eventsList, h2.eventInfo {
 
 p {
     font-size: 1.25em;
+}
+
+.guestbtn {
+    font-size: 15px; 
+    text-align: left;
+    color: #FF4081;
 }
