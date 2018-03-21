@@ -4,7 +4,10 @@ module.exports = function(app, passport) {
     app.get('/signup', authController.signup);
     app.get('/signin', authController.signin);
     app.get('/home', isLoggedIn, authController.home);
+
+
     app.get('/create', isLoggedIn, authController.create);
+    
     app.get('/update/:id', isLoggedIn, authController.update);
     app.get('/events/:id', isLoggedIn, authController.oneEvent);
     app.get('/update_event/:id', isLoggedIn, authController.updateOneEvent);
@@ -16,10 +19,6 @@ module.exports = function(app, passport) {
             failureRedirect: '/signup'
         }
     ));
-
-    app.delete('/events/:id', isLoggedIn, authController.delete);
-    
-
 
     app.post('/signin', passport.authenticate('local-signin', {
             successRedirect: '/home',
