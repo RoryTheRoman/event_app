@@ -44,6 +44,7 @@ $(document).ready(function () {
     
     var id = $(this).data("id");
 
+    if (confirm ("Are you sure you want to delete?")){
     // Send the DELETE request.
     $.ajax("/events/" + id, {
       type: "DELETE",
@@ -54,7 +55,10 @@ $(document).ready(function () {
         window.location.href = "/home";
       }
     );
-  });
+  }
+  
+});
+
 
 
   //on click function for creating a guest
