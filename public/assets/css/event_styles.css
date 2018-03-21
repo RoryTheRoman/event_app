@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .homeWrapper {
     display: grid;
-    grid-template-columns: 35% 50% 15%;
+    grid-template-columns: 40% 60%;
     text-align: left;
 }
 
@@ -169,7 +169,7 @@ ul.eventsUl{
 }
 
 .eventsUl li{
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     padding-bottom: 8px;
 }
 
@@ -199,4 +199,22 @@ h2 {
 
 .home {
     margin-top: 20px;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    color: #FF4081;
+}
+
+.gobtn:hover {
+    text-decoration: none;
+    color: black;
+}
+
+h2.eventsList {
+    margin-top: 0px;
 }
