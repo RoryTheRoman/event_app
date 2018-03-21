@@ -20,8 +20,8 @@ module.exports = function (sequelize, DataTypes) {
         guests.belongsTo(models.events, {
             foreignKey: {
                 allowNull: false
-            }
-        });
+            }, onDelete: 'CASCADE'}
+        );
     };
 
     // events.associate = function (models) {

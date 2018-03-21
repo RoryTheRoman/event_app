@@ -29,17 +29,15 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     events.associate = function (models) {
-        events.hasMany(models.guests, {
-            onDelete: "cascade"
-        });
+        events.hasMany(models.guests, {onDelete: 'CASCADE'});
     };
 
     events.associate = function (models) {
-        events.belongsTo(models.user, {
-            foreignKey: {
+        events.belongsTo(models.user, 
+            { foreignKey: {
                 allowNull: false
-            }
-        });
+            },
+            onDelete: 'CASCADE'});
     };
 
     return events;
