@@ -20,20 +20,21 @@
 </nav>
 
 <div class="homeContainer">
+
+    <header>     
+        <div class="modify">
+            <p class="gobtn"><a href="/#"> Edit Event <i class="fas fa-edit"></i> </a></p>
+        </div>
+    </header>
+
     <div class="eventDisplayInfo">
       
-        <h2>{{event.event_name}}</h2> 
+        <h2 class="eventInfo">Event: {{event.event_name}}</h2> 
         <h3>Location: {{event.location}}</h3>
         <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
         <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
 
-        <ul>
-        {{#each guests}}
-            <h3>{{guest_name}} : {{item_name}}</h3>
-        {{/each}}
-        </ul>
-
-    <p id="addGuest" class="gobtn"> ADD GUEST >> </p>
+    <p id="addGuest" class="gobtn"> <i class="fas fa-plus"></i> GUEST </p>
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
          <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
@@ -50,15 +51,31 @@
 
     </div>
 
+
+
+    <div>
+        <h2 class="eventGuestInfo">Your Guests</h2>
+        <ul class="eventsUl">    
+            {{#each guests}}
+                <li class="eventsUl">
+                    <h3 class="name">{{this.guest_name}}: {{this.item_name}} </h3>
+                    <p class="contact">{{this.contact}} </p>
+                </li>
+            {{else}}
+                <p>You have no guests yet. Please click the "Add Guest" to add guests!</p>
+            {{/each}}
+        </ul>
+    </div>
+
     <script>
 $('#addGuest').on('click', function() {
   if($('#inputDIV').hasClass('hidden')) {
-     $(this).html("HIDE FORM >>");
+     $(this).html("<i class='fas fa-times'></i>");
     $('#inputDIV').css('display', 'block');
     $('#inputDIV').removeClass('hidden');
     $('#inputDIV').addClass('show');
      } else {
-     $(this).html("ADD GUEST >>");
+     $(this).html("<i class='fas fa-plus'></i> GUEST");
     $('#inputDIV').css('display', 'none');
   $('#inputDIV').removeClass('show');
     $('#inputDIV').addClass('hidden');     

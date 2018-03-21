@@ -224,7 +224,7 @@ a {
     color: black;
 }
 
-h2.eventsList {
+h2.eventsList, h2.eventInfo {
     margin-top: 0px;
 }
 
@@ -234,4 +234,12 @@ h2.eventsList {
 
 .row {
     margin: 0;
+}
+
+.editEvent {
+    text-align: right;
+}
+
+p {
+    font-size: 1.25em;
 }
