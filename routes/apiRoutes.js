@@ -30,7 +30,7 @@ module.exports = function (app) {
             });
     });
 
-    //DELETE route for updating an event:
+    //DELETE route for deleting an event:
     app.delete("/events/api/delete", function (req, res) {
         db.events.destroy({
             where: {
@@ -41,41 +41,8 @@ module.exports = function (app) {
         });
     });
 
-
-
-    // app.get("/events/api/update_event", function (req, res) {
-    //     db.events.findOne({
-    //         where: {
-    //             id: req.body.id
-    //         }
-    //     }).then(function (dbevents) {
-    //         res.json(dbevents);
-    //     });
-    // });
-
-
-        // //PUT route for updating an event:
-        // app.put("/update_event/api/update", function (req, res) {
-        //     console.log(req.body);
-    
-        //     db.events.update({
-        //         event_name: req.body.event_name,
-        //         event_date: req.body.event_date,
-        //         location: req.body.location,
-        //         start_time: req.body.start_time,
-        //         end_time: req.body.end_time
-        //     },
-        //     {   where: {
-        //         id: req.body.eventId
-        //     }})
-        //         .then(function (dbevents) {
-        //             res.json(dbevents);
-        //         });
-        // });
-
+    //PUT route for updating an event:
     app.put("/api/events", function (req, res) {
-        console.log(req.body);
-
         var idEvent = req.body.id;
 
         db.events.update({
@@ -85,13 +52,11 @@ module.exports = function (app) {
             start_time: req.body.start_time,
             end_time: req.body.end_time,
         },
-        {where: {
+        {   where: {
             id: idEvent
-        }}
-    )
-            .then(function (dbevents) {
-                res.json(dbevents);
-            });
+        }})
+        .then(function (dbevents) {
+            res.json(dbevents);
+        });
     });
-
 }

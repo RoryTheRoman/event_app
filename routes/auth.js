@@ -4,14 +4,6 @@ module.exports = function(app, passport) {
     app.get('/signup', authController.signup);
     app.get('/signin', authController.signin);
     app.get('/home', isLoggedIn, authController.home);
-
-
-    app.get('/create', isLoggedIn, authController.create);
-    
-    app.get('/update/:id', isLoggedIn, authController.update);
-    app.get('/events/:id', isLoggedIn, authController.oneEvent);
-    app.get('/update_event/:id', isLoggedIn, authController.updateOneEvent);
-
     app.get('/logout', authController.logout);
 
     app.post('/signup', passport.authenticate('local-signup', {
@@ -25,6 +17,11 @@ module.exports = function(app, passport) {
             failureRedirect: '/signin'
         }
     ));
+
+    app.get('/create', isLoggedIn, authController.create);
+    app.get('/update/:id', isLoggedIn, authController.update);
+    app.get('/events/:id', isLoggedIn, authController.oneEvent);
+    app.get('/update_event/:id', isLoggedIn, authController.updateOneEvent);
 
     function isLoggedIn(req, res, next) {
         if (req.isAuthenticated())
