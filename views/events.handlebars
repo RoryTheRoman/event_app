@@ -33,7 +33,6 @@
         <h3>Location: {{event.location}}</h3>
         <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
         <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
-        <h1>{{event.id}}</h1>
     </div>
 
     <div>
@@ -67,10 +66,10 @@
         <p id="addGuest" class="guestbtn"> <i class="fas fa-plus"></i> GUEST </p>
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
-         <form class="form-create-event" id="create-guest-form" name="create-guest" method="POST" action="/#">       
+         <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest" method="POST" action="/#">       
              <h2 class="form-event-heading">Input Guest Information</h2>
              <label for="guest-name"><h5>What is the name of the guest you will like to add?</h5></label>
-             <input type="text" class="form-control" id="guest-name" name="guest-name" placeholder="Name of Guest" required="" autofocus="" />
+             <input type="text" class="form-control" id="guest_name" name="guest_name-name" placeholder="Name of Guest" required="" autofocus="" />
              
              <label for="contact"><h5>What is the contact information of the guest?</h5></label>
              <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Information" required="" autofocus="" />

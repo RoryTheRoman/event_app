@@ -18,6 +18,17 @@ module.exports = function (app) {
             });
     });
 
+    app.post("/api/guests", function (req, res) {
+        db.guests.create({
+            guest_name: req.body.guest_name,
+            contact: req.body.contact,
+            eventId: req.body.eventId
+        })
+            .then(function (dbguests) {
+                res.json(dbguests);
+            });
+    });
+
     app.put("/api/events", function (req, res) {
         console.log(req.body);
 

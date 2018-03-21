@@ -56,12 +56,44 @@ $(document).ready(function () {
     );
   });
 
+
+  //on click function for creating a guest
+  $("#create-guest-form").on("submit", function (event) {
+    // Make sure to preventDefault on a submit guest.
+    event.preventDefault();
+
+    var id = $(this).data("id");
+
+    // Getting jQuery references of new guest
+    var eventId = $(this).data("id");
+    var guest_name = $("#guest_name").val().trim();
+    var contact = $("#contact").val().trim();
+
+    // Constructing a guest object to hand to the database
+    var newGuest = {
+      guest_name: guest_name,
+      contact: contact,
+      eventId: eventId
+    };
+
+    console.log(newGuest);
+
+    // Send the POST request.
+    $.ajax("/api/guests", {
+      type: "POST",
+      data: newGuest
+    }).then(
+      function () {
+        // Reload the page to get the updated list
+        window.location.href = "/events/" + id;
+      }
+    );
+  });
+
   // on click function for updating an event
   $("#update-event-form").on("submit", function (event) {
 
     var id = $(this).data("id");
-
-
     // Make sure to preventDefault on a submit event.
     event.preventDefault();
 

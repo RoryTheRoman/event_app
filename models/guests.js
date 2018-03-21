@@ -10,11 +10,10 @@ module.exports = function (sequelize, DataTypes) {
         contact: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [7, 11],
-                isAlpha: false
+            // validate: {
+            //     len: [7, 11]
             }
-        }
+        // }
     });
 
     guests.associate = function (models) {
