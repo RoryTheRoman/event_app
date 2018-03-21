@@ -18,16 +18,28 @@ module.exports = function (app) {
             });
     });
 
-    // app.delete("/thisEvent/:id", function (req, res) {
-    //     db.events.destroy({
-    //         where: {
-    //             id: req.params.id
-    //         }
-    //     })
-    //         .then(function (data) {
-    //             res.json(data);
-    //         });
-    // });
+    app.put("/api/events", function (req, res) {
+        console.log(req.body);
+
+        var idEvent = req.body.id;
+
+        db.events.update({
+            event_name: req.body.event_name,
+            location: req.body.location,
+            event_date: req.body.event_date,
+            start_time: req.body.start_time,
+            end_time: req.body.end_time,
+        },
+        {where: {
+            id: idEvent
+        }}
+    )
+            .then(function (dbevents) {
+                res.json(dbevents);
+            });
+    });
+
+
 
 
     // //POST route for saving guest information:

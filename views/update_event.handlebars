@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Event App</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/logout">Log Out</a></li>
+            </ul>
+            <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span><span id="user_id">{{user_id}}</span>
+        </div>
+    </div>
+</nav>
+
+<div class="homeContainer">
+
+<div class="create-event">
+    <form class="form-create-event" id="update-event-form" name="update-event" data-id={{event.id}} method="UPDATE" action="/#">       
+        <h2 class="form-event-heading">Update Event Information</h2>
+        <label for="event_name"><h5>What is the name of the event you will be hosting?</h5></label>
+        <input type="text" class="form-control" id="event_name" name="event-name" value={{event.event_name}} required="" autofocus="" />
+        
+        <label for="type-Event"><h5>What is the date of the event?</h5></label>
+        <input type="date" class="form-control" id="date" name="date" value={{event.event_date}} required="" autofocus="" />
+
+        <label for="type-Event"><h5>What is the location of the event?</h5></label>
+        <input type="text" class="form-control" id="location" name="location" value={{event.location}} required="" autofocus="" />
+
+        <label for="type-Event"><h5>What is the start time of the event?</h5></label>
+        <input type="time" class="form-control" id="start-time" name="time" value={{event.start_time}} required="" autofocus="" />
+
+        <label for="type-Event"><h5>What is the end time of the event?</h5></label>
+        <input type="time" class="form-control" id="end-time" value={{event.end_time}} required="" autofocus="" />
+
+        <button class="btn btn-lg submitButton" type="submit">Submit Event</button>   
+    </form>
+
+</div>
+</div>
