@@ -33,10 +33,35 @@
         <h3>Location: {{event.location}}</h3>
         <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
         <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
-
+        <h1>{{event.id}}</h1>
     </div>
 
     <div>
+        <h2 class="eventItemInfo">Items Needed</h2>
+        <p id="addItem" class="guestbtn"> <i class="fas fa-plus"></i> ITEM </p>
+
+        <div id="itemDIV" style="display:none" class="create-event hidden">
+         <form class="form-create-event" id="create-item-form" name="create-item" method="POST" action="/#">       
+             <h2 class="form-event-heading">Item</h2>
+             <label for="item-name"><h5>What is the item?</h5></label>
+             <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Name of Item" required="" autofocus="" />
+      
+             <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>   
+         </form>
+        </div>
+
+        <ul class="eventsUl">    
+            {{#each items}}
+                <li class="eventsUl">
+                    <h3 class="name">{{this.name}} </h3>
+                </li>
+            {{else}}
+                <p>You have no items yet. Click the "+ Item" to add an item!</p>
+            {{/each}}
+        </ul>
+    </div>
+
+        <div>
         <h2 class="eventGuestInfo">Your Guests</h2>
 
         <p id="addGuest" class="guestbtn"> <i class="fas fa-plus"></i> GUEST </p>
@@ -66,36 +91,11 @@
         </ul>
     </div>
 
-    <div>
-        <h2 class="eventItemInfo">Items Needed</h2>
-        <p id="addItem" class="guestbtn"> <i class="fas fa-plus"></i> ITEM </p>
-
-        <div id="itemDIV" style="display:none" class="create-event hidden">
-         <form class="form-create-event" id="create-item-form" name="create-item" method="POST" action="/#">       
-             <h2 class="form-event-heading">Item</h2>
-             <label for="item-name"><h5>What is the item?</h5></label>
-             <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Name of Item" required="" autofocus="" />
-      
-             <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>   
-         </form>
-        </div>
-
-        <ul class="eventsUl">    
-            {{#each items}}
-                <li class="eventsUl">
-                    <h3 class="name">{{this.name}} </h3>
-                </li>
-            {{else}}
-                <p>You have no items yet. Click the "+ Item" to add an item!</p>
-            {{/each}}
-        </ul>
-    </div>
-
-    <header>     
+    <footer>     
         <div class="modify">
-            <p class="gobtn"><a href="/#"> Delete Event <i class="fas fa-minus"></i> </a></p>
+           <a href="/thisEvent/{{event.id}}">  <p class="gobtn" data-id={{event.id}} id="delEntry">Delete Event <i class="fas fa-minus"></i></p> </a>
         </div>
-    </header>
+    </footer>
 
     <script>
 $('#addGuest').on('click', function() {

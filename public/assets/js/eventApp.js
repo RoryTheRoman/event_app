@@ -31,7 +31,25 @@ $(document).ready(function () {
       data: newEvent
     }).then(
       function () {
-        console.log("created new event");
+        // Reload the page to get the updated list
+        window.location.href = "/home";
+      }
+    );
+  });
+
+  //on click function for deleting an event
+  $("#delEntry").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    event.preventDefault();
+    
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/events/" + id, {
+      type: "DELETE",
+      data: id
+    }).then(
+      function() {
         // Reload the page to get the updated list
         window.location.href = "/home";
       }

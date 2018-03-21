@@ -42,6 +42,21 @@ exports.home = function (req, res) {
     });
 }
 
+exports.delete = function (req, res) {
+    var first = req.user.firstname;
+    var last = req.user.lastname;
+    var user_id = req.user.id;
+    var toDelete = req.params.id;
+    db.events.destroy({
+        where: {
+            id: toDelete
+        }
+    }).then(function (data) {
+        var info = data;
+            res.render('home', {first: first, last: last, user_id: user_id, data: data});
+        });
+}
+
 // exports.events = function (req, res) {
 //     console.log(req.events.id);
 //     var first = req.user.firstname;
@@ -60,15 +75,7 @@ exports.home = function (req, res) {
 //     res.render('events', { first: first, last: last, user_id: user_id });
 // }
 
-exports.home = function (req, res) {
-    var first = req.user.firstname;
-    var last = req.user.lastname;
-    var user_id = req.user.id;
-    db.events.findAll({}).then(function (dbevents) {
-        var events = dbevents;
-        res.render('home', { first: first, last: last, user_id: user_id, events: events});
-    });
-}
+
 
 exports.logout = function (req, res) {
     req.session.destroy(function (err) {

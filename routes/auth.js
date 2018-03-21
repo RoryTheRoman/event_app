@@ -15,6 +15,7 @@ module.exports = function(app, passport) {
 
     app.get('/events/:id', isLoggedIn, authController.oneEvent);
 
+    app.delete('/events/:id', isLoggedIn, authController.delete);
 
     app.get('/logout', authController.logout);
     app.post('/signin', passport.authenticate('local-signin', {

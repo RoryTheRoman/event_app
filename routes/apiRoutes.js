@@ -18,6 +18,18 @@ module.exports = function (app) {
             });
     });
 
+    // app.delete("/thisEvent/:id", function (req, res) {
+    //     db.events.destroy({
+    //         where: {
+    //             id: req.params.id
+    //         }
+    //     })
+    //         .then(function (data) {
+    //             res.json(data);
+    //         });
+    // });
+
+
     // //POST route for saving guest information:
     // app.post("/api/guests", function (req, res) {
     //     // console.log(req.body);
