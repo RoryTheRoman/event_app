@@ -14,7 +14,7 @@
                 <li><a href="/home">Home</a></li>
                 <li><a href="/logout">Log Out</a></li>
             </ul>
-            <span class="welcomeMessage"> WELCOME {{first}} {{last}}! ID:</span><span id="user_id">{{user_id}}</span>
+            <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span><span id="user_id">{{user_id}}</span>
         </div>
     </div>
 </nav>
@@ -22,20 +22,50 @@
 <div class="homeContainer">
     <div class="eventDisplayInfo">
       
-        <h1>{{event.event_name}}</h1> 
+        <h2>{{event.event_name}}</h2> 
         <h3>Location: {{event.location}}</h3>
-        <h3>Date: {{event.event_date}}</h3>
+        <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
         <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
 
-        {{!-- <ul>
+        <ul>
         {{#each guests}}
             <h3>{{guest_name}} : {{item_name}}</h3>
         {{/each}}
-        </ul> --}}
+        </ul>
+
+    <p id="addGuest" class="gobtn"> ADD GUEST >> </p>
+
+        <div id="inputDIV" style="display:none" class="create-event hidden">
+         <form class="form-create-event" id="create-event-form" name="create-event" method="POST" action="/#">       
+             <h2 class="form-event-heading">Input Guest Information</h2>
+             <label for="guest_name"><h5>What is the name of the guest you will like to add?</h5></label>
+             <input type="text" class="form-control" id="guest_name" name="guest_name-name" placeholder="Name of Guest" required="" autofocus="" />
+             
+             <label for="guest-contact"><h5>What is the contact information of the guest?</h5></label>
+             <input type="text" class="form-control" id="guest-contact" name="guest-contact" placeholder="Contact Information" required="" autofocus="" />
+      
+             <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Guest</button>   
+         </form>
+        </div>
 
     </div>
-    
-    <a href="/home"><button class="btn btn-lg home">Home</button></a>
+
+    <script>
+$('#addGuest').on('click', function() {
+  if($('#inputDIV').hasClass('hidden')) {
+     $(this).html("HIDE FORM >>");
+    $('#inputDIV').css('display', 'block');
+    $('#inputDIV').removeClass('hidden');
+    $('#inputDIV').addClass('show');
+     } else {
+     $(this).html("ADD GUEST >>");
+    $('#inputDIV').css('display', 'none');
+  $('#inputDIV').removeClass('show');
+    $('#inputDIV').addClass('hidden');     
+   } 
+});
+
+</script>
 
 </div>
 

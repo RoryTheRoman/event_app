@@ -27,7 +27,7 @@ exports.oneEvent = function (req, res) {
     }).then(function (data) {
         var event = data;
         console.log(event);
-        res.render('events', {first: first, last: last, event: event});
+        res.render("events", {first: first, last: last, event: event});
     });
 }
 
