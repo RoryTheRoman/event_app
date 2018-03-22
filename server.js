@@ -10,16 +10,23 @@ var express                 = require("express"),
     exphbs                  = require("express-handlebars"),
     moment                  = require("moment");
 
+    var flash=require("connect-flash");
+
 var PORT = process.env.PORT || 3000;
 
 var hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {
         formatDate: function (date, format) {
-            return moment(date).format(format);
+            return moment(date).add(1, 'day').format(format);
+        },
+        formatTime: (time) => {
+            return moment(time, 'HH:mm a').format("hh:mm a");
         }
     }
 })
+
+app.use(flash());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

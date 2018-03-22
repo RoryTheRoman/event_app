@@ -1,31 +1,28 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 
+//CREATE GUEST
+$("#create-guest-form").on("submit", function (event) {
+  event.preventDefault();
 
-    //CREATE GUEST
-    $("#create-guest-form").on("submit", function (event) {
-        event.preventDefault();
+  var id = $(this).data("id");
+  var guest_name = $("#guest_name").val().trim();
+  var contact = $("#contact").val().trim();
 
+  var newGuest = {
+    guest_name: guest_name,
+    contact: contact,
+    eventId: id
+  };
 
-        var eventId = $(this).data("id");
-        var guest_name = $("#guest_name").val().trim();
-
-        var contact = $("#contact").val().trim();
-
-        var newGuest = {
-            guest_name: guest_name,
-            contact: contact,
-            eventId: eventId
-        };
-
-        $.ajax("/api/guests", {
-            type: "POST",
-            data: newGuest
-        }).then(
-            function () {
-                window.location.href = "/events/" + eventId;
-            }
-        );
-    });
+  $.ajax("/api/guests", {
+    type: "POST",
+    data: newGuest
+  }).then(
+    function () {
+      window.location.href = "/events/" + id;
+    }
+  );
+});
 
     //on click function for updating an event
     $("#update-guest").on("click", function (event) {
@@ -59,5 +56,4 @@
 
             })
     });
-
-});
+  });

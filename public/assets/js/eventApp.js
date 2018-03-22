@@ -10,7 +10,7 @@ $(document).ready(function () {
     var start_time = $("#start-time").val().trim();
     var end_time = $("#end-time").val().trim();
     var user_id = $("#user_id").text();
-
+    
     var newEvent = {
       event_name: event_name,
       event_date: event_date,
@@ -30,29 +30,6 @@ $(document).ready(function () {
     );
   });
 
-//CREATE GUEST
-$("#create-guest-form").on("submit", function (event) {
-  event.preventDefault();
-
-  var eventId = $(this).data("id");
-  var guest_name = $("#guest_name").val().trim();
-  var contact = $("#contact").val().trim();
-
-  var newGuest = {
-    guest_name: guest_name,
-    contact: contact,
-    eventId: eventId
-  };
-
-  $.ajax("/api/guests", {
-    type: "POST",
-    data: newGuest
-  }).then(
-    function () {
-      window.location.href = "/events/" + id;
-    }
-  );
-});
 
 //DELETE EVENT
   $("#delEntry").on("click", function(event) {

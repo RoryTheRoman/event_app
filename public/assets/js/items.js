@@ -1,22 +1,18 @@
 $(document).ready(function () {
 
-    //on click function for creating an event
     $("#create-item-form").on("submit", function (event) {
-        // Make sure to preventDefault on a submit event.
         event.preventDefault();
 
         var id = $(this).data("id");
-
-        // Getting jQuery references of new event
-        var item_name = $("#item-name").val().trim();
-
-        // Constructing a event object to hand to the database
+        var item_name = $("#item_name").val().trim();
+        var quantity = $("#quantity").val();
+        
         var newItem = {
             item_name: item_name,
-            guestId: id
+            quantity: quantity,
+            eventId: id
         };
 
-        // Send the POST request.
         $.ajax("/api/items", {
             type: "POST",
             data: newItem
@@ -25,8 +21,6 @@ $(document).ready(function () {
                 window.location.href = "/events/" + id;
             });
     });
-
-
 
 
     //on click function for updating an event
