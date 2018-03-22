@@ -163,6 +163,24 @@ ul.eventsUl{
     padding: 0;
 }
 
+.modify-buttons {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.modify-buttons a:first-child {
+    margin-right: 20px;
+}
+
+.modify-buttons p.gobtn {
+    font-size: 15px;
+}
+
+.modify-buttons span {
+    padding-right: 3px;
+}
+
 .eventsUl li{
     border-bottom: 1px solid black;
     padding-bottom: 8px;

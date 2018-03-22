@@ -16,7 +16,7 @@ var hbs = exphbs.create({
     defaultLayout: "main",
     helpers: {
         formatDate: function (date, format) {
-            return moment(date).format(format);
+            return moment(date).add(1, 'day').format(format);
         },
         formatTime: (time) => {
             return moment(time, 'HH:mm a').format("hh:mm a");

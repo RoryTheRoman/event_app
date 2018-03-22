@@ -28,10 +28,15 @@
 <div class="homeContainer">
 
     <header>
-        <div class="modify">
+        <div class="modify-buttons">
             <a href="/update_event/{{event.id}}">
-                <p class="gobtn" data-id={{event.id}} id="updEntry">Edit Event
-                    <i class="fas fa-edit"></i>
+                <p class="gobtn" data-id={{event.id}} id="updEntry">
+                    <i class="far fa-edit"></i>
+                </p>
+            </a>
+            <a href="/thisEvent/{{event.id}}">
+                <p class="gobtn" data-id={{event.id}} id="delEntry">
+                    <i class="far fa-trash-alt"></i>
                 </p>
             </a>
         </div>
@@ -75,10 +80,10 @@
     </div>
 
     <div>
-        <h2 class="eventGuestInfo">Your Guests</h2>
+        <h2 class="eventGuestInfo">Your Guests <p id="addGuest" class="guestbtn">
+            <i class="fas fa-plus"></i></p></h2>
 
-        <p id="addGuest" class="guestbtn">
-            <i class="fas fa-plus"></i> GUEST </p>
+        
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
             <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest" method="POST" action="/#">
@@ -112,16 +117,6 @@
             {{/each}}
         </ul>
     </div>
-
-    <footer>
-        <div class="modify">
-            <a href="/thisEvent/{{event.id}}">
-                <p class="gobtn" data-id={{event.id}} id="delEntry">Delete Event
-                    <i class="fas fa-minus"></i>
-                </p>
-            </a>
-        </div>
-    </footer>
 
     <script>
         $('#addGuest').on('click', function () {
