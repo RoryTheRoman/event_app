@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -11,38 +12,49 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/logout">Log Out</a></li>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/logout">Log Out</a>
+                </li>
             </ul>
-    <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span><p class="welcomeMessage" id="user_id">{{user_id}}</p>
-    </div>
+            <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span>
+            <p class="welcomeMessage" id="user_id">{{user_id}}</p>
+        </div>
 </nav>
 
 <div class="homeContainer">
 
-    <header>     
+    <header>
         <div class="create">
-            <p class="gobtn"><a href="/create"> Create Event <i class="fas fa-plus"></i> </a></p>
+            <p class="gobtn">
+                <a href="/create"> Create Event
+                    <i class="fas fa-plus"></i>
+                </a>
+            </p>
         </div>
-     </header>
+    </header>
 
-<div class="homeWrapper">
-    <div>
-        <h2 class="eventsList">Your Events</h2>
-        <ul class="eventsUl">    
-            {{#each events}}
+    <div class="homeWrapper">
+        <div>
+            <h2 class="eventsList">Your Events</h2>
+            <ul class="eventsUl">
+                {{#each events}}
                 <li class="eventsUl">
                     <h3 class="name">{{this.event_name}}</h3>
                     <p class="date">{{formatDate this.event_date "MM/DD/YYYY"}} </p>
-                    <a href="/events/{{this.id}}"><p class="gobtn"> DETAILS >> </p></a>
+                    <a href="/events/{{this.id}}">
+                        <p class="gobtn"> DETAILS >> </p>
+                    </a>
                 </li>
-            {{else}}
+                {{else}}
                 <p>You have no events yet. Please click the button below to create one!</p>
-            {{/each}}
-        </ul>
-    </div>
+                {{/each}}
+            </ul>
+        </div>
 
-</div>
+    </div>
 
 
 </div>

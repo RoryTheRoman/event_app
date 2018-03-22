@@ -42,7 +42,7 @@ exports.updateOneEvent = function (req, res) {
     }).then(function (data) {
         var event = data;
         console.log(event);
-        res.render("update_event", {event: event});
+        res.render("update_event", {first: first, last: last, event: event});
     });
 }
 
@@ -53,7 +53,7 @@ exports.home = function (req, res) {
     db.events.findAll({})
     .then(function (dbevents) {
         var events = dbevents;
-        res.render('home', { first: first, last: last, user_id: user_id, events: events});
+        res.render('home', {first: first, last: last, user_id: user_id, events: events});
     });
 }
 
@@ -66,10 +66,10 @@ exports.update = function (req, res) {
         where: {
             id: toUpdate
         }
-    }).then(function (data) {
+    }).then(function (data) {ß
         var event = data;
         console.log(event);
-        res.render("events", {first: first, last: last, event: event});
+        res.render("events", {first: first, last: last, user_id: user_id, event: event});
     });
 }
 

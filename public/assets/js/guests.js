@@ -8,17 +8,13 @@ $(document).ready(function () {
         var id = $(".event-name").text();
 
         // Getting jQuery references of new event
-        var guest_name = $("#guest-name");
-        var contact = $("#contact");
+        var guest_name = $("#guest-name").val().trim();
+        var contact = $("#contact").val().trim();
 
         // Constructing a event object to hand to the database
         var newGuest = {
-            guest_name: guest_name
-                .val()
-                .trim(),
+            guest_name: guest_name,
             contact: contact
-                .val()
-                .trim()
         };
 
         // Send the POST request.
@@ -35,12 +31,12 @@ $(document).ready(function () {
                     function () {
                         console.log("updated guest");
                         // Reload the page to get the updated list
-                        window.location.href = "/events";
+                        window.location.href = "/events/" + id;
                     })
             });
         console.log("created new guest");
         // Reload the page to get the updated list
-        location.reload();
+        window.location.href = "/events/" + id;
 });
 
 //on click function for updating an event
@@ -71,7 +67,7 @@ $("#update-guest").on("click", function (event) {
         function () {
             console.log("updated guest");
             // Reload the page to get the updated list
-            window.location.href = "/events";
+            window.location.href = "/events/" + id;
         })
 });
   
