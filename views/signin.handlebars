@@ -26,6 +26,11 @@
 
 <div class="wrapper">
     <form class="form-signin" id="signin" name="signin" method="POST" action="/signin">
+        {{message}}
+       {{#each message}}
+       <p></p>
+            {{item}}
+       {{/each}}
         <h2 class="form-signin-heading">Please login</h2>
         <input type="email" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
         <input type="password" class="form-control" name="password" placeholder="Password" required="" />

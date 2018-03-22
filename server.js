@@ -10,6 +10,8 @@ var express                 = require("express"),
     exphbs                  = require("express-handlebars"),
     moment                  = require("moment");
 
+    var flash=require("connect-flash");
+
 var PORT = process.env.PORT || 3000;
 
 var hbs = exphbs.create({
@@ -23,6 +25,8 @@ var hbs = exphbs.create({
         }
     }
 })
+
+app.use(flash());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
