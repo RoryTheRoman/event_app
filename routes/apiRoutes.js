@@ -27,30 +27,8 @@ module.exports = function (app) {
                 var events = dbevents;
              res.render("home", {first: first, last: last, user_id: user_id, events: events});
     });
-        
-        
-            // db.guests.findAll({})
+});
 
-        // function getEvents(){
-        //     db.events.findAll({})
-        //     .then(function (dbevents) {
-        //         var events = dbevents;      
-        //         getGuest(events);
-        //     });
-        // }
-
-        // function getGuest(events){
-        //     db.guests.findAll({})
-        //     .then(function (dbguests,) {
-        //         var guests = dbguests;   
-        //         renderPage(res, dbguests, dbevents);
-        //     });
-        // }
-
-        // function renderPage(res, dbguests, dbevents){
-        //      res.render("home", {first: first, last: last, user_id: user_id, events: events});
-        // }
-    });
 
     function getGuest(event, idEvent, res){
         db.guests.findAll({
@@ -89,6 +67,7 @@ module.exports = function (app) {
     }      
 
     app.get("/events/:id", function(req, res) {
+
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
@@ -97,13 +76,7 @@ module.exports = function (app) {
         getEvents(idEvent, res);
         
     });
-
-
-
-
-
-
-
+        
     //POST route for saving a guest:
     app.post("/api/guests", function (req, res) {
         db.guests.create({
@@ -138,11 +111,10 @@ module.exports = function (app) {
             start_time: req.body.start_time,
             end_time: req.body.end_time,
         },
-        {   where: {
-            id: idEvent
-        }})
+        {where: {id: idEvent}})
         .then(function (dbevents) {
             res.json(dbevents);
         });
     });
+
 }

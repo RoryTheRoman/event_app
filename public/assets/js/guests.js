@@ -1,11 +1,11 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
     //on click function for creating an event
     $("#create-guest-form").on("submit", function (event) {
         // Make sure to preventDefault on a submit event.
         event.preventDefault();
 
-        var id = $(".event-name").text();
+//         var id = $(".event-name").text();
 
         // Getting jQuery references of new event
         var guest_name = $("#guest-name").val().trim();
