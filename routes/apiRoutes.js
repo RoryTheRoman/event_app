@@ -4,7 +4,7 @@ var authController = require('../controllers/authController.js');
 module.exports = function (app) {  
     //POST route for saving an event:
     app.post("/api/events", function (req, res) {
-        console.log(req.body);
+        
         db.events.create({
             event_name: req.body.event_name,
             location: req.body.location,

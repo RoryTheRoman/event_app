@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Event App</a>
+            <a class="navbar-brand" href="/">Eventful</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -45,15 +45,15 @@
     <div class="eventDisplayInfo">
 
         <h2 class="eventInfo">Event: {{event.event_name}}</h2>
-        <h3>Location: {{event.location}}</h3>
-        <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
-        <h3>Time: {{formatTime event.start_time}} - {{formatTime event.end_time}}</h3>
+        <p>Location: {{event.location}}</p>
+        <p>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</p>
+        <p>Time: {{formatTime event.start_time}} - {{formatTime event.end_time}}</p>
     </div>
 
     <div>
-        <h2 class="eventItemInfo">Items Needed</h2>
-        <p id="addItem" class="guestbtn">
-            <i class="fas fa-plus"></i> ITEM </p>
+        <h2 class="eventItemInfo">Items Needed 
+        <span id="addItem" class="guestbtn">
+            <i class="fas fa-plus guestbtn"></i> ITEM </span> </h2>
 
         <div id="itemDIV" style="display:none" class="create-event hidden">
             <form class="form-create-event" id="create-item-form" data-id={{guest.id}} name="create-item" method="POST" action="/items">
@@ -80,9 +80,8 @@
     </div>
 
     <div>
-        <h2 class="eventGuestInfo">Your Guests <p id="addGuest" class="guestbtn">
-            <i class="fas fa-plus"></i></p></h2>
-
+        <h2 class="eventGuestInfo">Your Guests <span id="addGuest" class="guestbtn">
+            <i class="fas fa-plus guestbtn"></i> GUEST <span></h2>
         
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
@@ -108,8 +107,8 @@
             {{#each guests}}
 
             <li class="eventsUl">
-                <h3 class="name">{{this.guest_name}}: {{this.item_name}} </h3>
-                <p class="contact">{{this.contact}} </p>
+                <h4 class="name">{{this.guest_name}} </h4>
+                <p class="contact">Contact: {{this.contact}} </p>
             </li>
 
         {{else}}

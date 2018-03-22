@@ -7,7 +7,7 @@ exports.signup = function (req, res) {
 
 exports.signin = function (req, res) {
     console.log(req.flash('error'));
-    res.render('signin', {message: req.flash('error')});
+    res.render('signin', { message: req.flash('error') });
 }
 
 exports.create = function (req, res) {

@@ -32,7 +32,7 @@ h1 {
 }
 
 h4 {
-    margin-bottom: 1.2%;
+    margin-bottom: 2.2%;
 }
 
 .logInHome {
@@ -41,7 +41,7 @@ h4 {
 
 .navbar {
     margin: 0;
-    background-color: #abaaa2;
+    background-color: #7F2040;
     border: none;
 
 }
@@ -90,7 +90,8 @@ input {
 }
 
 #user_id {
-    color: #abaaa2;
+    color: #7F2040;
+    font-size: 1px;
 }
 
 input[type="password"] {
@@ -151,6 +152,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Arvo', serif;
   }
 
+h3 {
+    font-size: 22px;
+}
+
 .homeWrapper {
     width: 90%;
     margin: 0 auto;
@@ -179,11 +184,6 @@ ul.eventsUl{
 
 .modify-buttons span {
     padding-right: 3px;
-}
-
-.eventsUl li{
-    border-bottom: 1px solid black;
-    padding-bottom: 8px;
 }
 
 .date {
@@ -244,12 +244,44 @@ h2.eventsList, h2.eventInfo {
     text-align: right;
 }
 
-p {
-    font-size: 1.25em;
+p, .svg-inline--fa{
+    font-size: 18px;
+}
+
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-brand:hover{
+    color: #FF4081;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+    background-color: #FF4081;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+    padding: 8px;
+    font-size: 16px;
+}
+
+hr.allEventsHome {
+    width: 100%;
+    border-top: 1px solid #f8f8f8a2;
 }
 
 .guestbtn {
     font-size: 15px; 
     text-align: left;
+    margin-left: 15px;
     color: #FF4081;
+}
+
+p {
+    margin: 0 0 5px;
 }
