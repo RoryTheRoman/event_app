@@ -51,7 +51,7 @@
             <i class="fas fa-plus"></i> ITEM </p>
 
         <div id="itemDIV" style="display:none" class="create-event hidden">
-            <form class="form-create-event" id="create-item-form" name="create-item" method="POST" action="/#">
+            <form class="form-create-event" id="create-item-form" data-id={{guest.id}} name="create-item" method="POST" action="/items">
                 <h2 class="form-event-heading">Item</h2>
                 <label for="item-name">
                     <h5>What is the item?</h5>
