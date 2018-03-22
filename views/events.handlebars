@@ -1,7 +1,8 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -11,26 +12,34 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/logout">Log Out</a></li>
+                <li>
+                    <a href="/home">Home</a>
+                </li>
+                <li>
+                    <a href="/logout">Log Out</a>
+                </li>
             </ul>
-            <span class="welcomeMessage"> WELCOME!</span><span id="user_id">{{user_id}}</span>
-            {{!-- {{first}} {{last}} --}}
+            <span class="welcomeMessage"> WELCOME {{first}} {{last}}!</span>
+            <span id="user_id">{{user_id}}</span>
         </div>
     </div>
 </nav>
 
 <div class="homeContainer">
 
-    <header>     
+    <header>
         <div class="modify">
-            <a href="/update_event/{{event.id}}">  <p class="gobtn" data-id={{event.id}} id="updEntry">Edit Event <i class="fas fa-edit"></i></p> </a>
+            <a href="/update_event/{{event.id}}">
+                <p class="gobtn" data-id={{event.id}} id="updEntry">Edit Event
+                    <i class="fas fa-edit"></i>
+                </p>
+            </a>
         </div>
     </header>
 
     <div class="eventDisplayInfo">
-      
-        <h2 class="eventInfo">Event: {{event.event_name}}</h2> 
+
+        <h2 class="eventInfo">Event: {{event.event_name}}</h2>
         <h3>Location: {{event.location}}</h3>
         <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
         <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
@@ -38,102 +47,111 @@
 
     <div>
         <h2 class="eventItemInfo">Items Needed</h2>
-        <p id="addItem" class="guestbtn"> <i class="fas fa-plus"></i> ITEM </p>
+        <p id="addItem" class="guestbtn">
+            <i class="fas fa-plus"></i> ITEM </p>
 
         <div id="itemDIV" style="display:none" class="create-event hidden">
-         <form class="form-create-event" id="create-item-form" name="create-item" method="POST" action="/#">       
-             <h2 class="form-event-heading">Item</h2>
-             <label for="item-name"><h5>What is the item?</h5></label>
-             <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Name of Item" required="" autofocus="" />
-      
-             <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>   
-         </form>
+            <form class="form-create-event" id="create-item-form" name="create-item" method="POST" action="/#">
+                <h2 class="form-event-heading">Item</h2>
+                <label for="item-name">
+                    <h5>What is the item?</h5>
+                </label>
+                <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Name of Item" required="" autofocus=""
+                />
+
+                <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>
+            </form>
         </div>
 
-        <ul class="eventsUl">    
+        <ul class="eventsUl">
             {{#each items}}
-                <li class="eventsUl">
-                    <h3 class="name">{{this.name}} </h3>
-                </li>
+            <li class="eventsUl">
+                <h3 class="name">{{this.name}} </h3>
+            </li>
             {{else}}
-                <p>You have no items yet. Click the "+ Item" to add an item!</p>
+            <p>You have no items yet. Click the "+ Item" to add an item!</p>
             {{/each}}
         </ul>
     </div>
 
-        <div>
+    <div>
         <h2 class="eventGuestInfo">Your Guests</h2>
 
-        <p id="addGuest" class="guestbtn"> <i class="fas fa-plus"></i> GUEST </p>
+        <p id="addGuest" class="guestbtn">
+            <i class="fas fa-plus"></i> GUEST </p>
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
-         <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest" method="POST" action="/#">       
-             <h2 class="form-event-heading">Input Guest Information</h2>
-             <label for="guest-name"><h5>What is the name of the guest you will like to add?</h5></label>
-             <input type="text" class="form-control" id="guest_name" name="guest_name-name" placeholder="Name of Guest" required="" autofocus="" />
-             
-             <label for="contact"><h5>What is the contact information of the guest?</h5></label>
-             <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Information" required="" autofocus="" />
-      
-             <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Guest</button>   
-         </form>
+            <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest" method="POST" action="/#">
+                <h2 class="form-event-heading">Input Guest Information</h2>
+                <label for="guest-name">
+                    <h5>What is the name of the guest you will like to add?</h5>
+                </label>
+                <input type="text" class="form-control" id="guest_name" name="guest_name-name" placeholder="Name of Guest" required="" autofocus=""
+                />
+
+                <label for="contact">
+                    <h5>What is the contact information of the guest?</h5>
+                </label>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact Information" required="" autofocus=""
+                />
+
+                <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Guest</button>
+            </form>
         </div>
 
-        <ul class="eventsUl">    
+        <ul class="eventsUl">
             {{#each guests}}
-                <li class="eventsUl">
-                    <h3 class="name">{{this.guest_name}}: {{this.item_name}} </h3>
-                    <p class="contact">{{this.contact}} </p>
-                </li>
-            {{else}}
-                <p>You have no guests yet. Click the "+ Guest" to add guests!</p>
+
+            <li class="eventsUl">
+                <h3 class="name">{{this.guest_name}}: {{this.item_name}} </h3>
+                <p class="contact">{{this.contact}} </p>
+            </li>
+
+        {{else}}
+            <p>You have no guests yet. Click the "+ Guest" to add guests!</p>
             {{/each}}
         </ul>
     </div>
 
-    <footer>     
+    <footer>
         <div class="modify">
-           <a href="/thisEvent/{{event.id}}">  <p class="gobtn" data-id={{event.id}} id="delEntry">Delete Event <i class="fas fa-minus"></i></p> </a>
+            <a href="/thisEvent/{{event.id}}">
+                <p class="gobtn" data-id={{event.id}} id="delEntry">Delete Event
+                    <i class="fas fa-minus"></i>
+                </p>
+            </a>
         </div>
     </footer>
 
     <script>
-$('#addGuest').on('click', function() {
-  if($('#inputDIV').hasClass('hidden')) {
-     $(this).html("<i class='fas fa-times'></i> CLOSE");
-    $('#inputDIV').css('display', 'block');
-    $('#inputDIV').removeClass('hidden');
-    $('#inputDIV').addClass('show');
-     } else {
-     $(this).html("<i class='fas fa-plus'></i> GUEST");
-    $('#inputDIV').css('display', 'none');
-  $('#inputDIV').removeClass('show');
-    $('#inputDIV').addClass('hidden');     
-   } 
-});
+        $('#addGuest').on('click', function () {
+            if ($('#inputDIV').hasClass('hidden')) {
+                $(this).html("<i class='fas fa-times'></i> CLOSE");
+                $('#inputDIV').css('display', 'block');
+                $('#inputDIV').removeClass('hidden');
+                $('#inputDIV').addClass('show');
+            } else {
+                $(this).html("<i class='fas fa-plus'></i> GUEST");
+                $('#inputDIV').css('display', 'none');
+                $('#inputDIV').removeClass('show');
+                $('#inputDIV').addClass('hidden');
+            }
+        });
 
-$('#addItem').on('click', function() {
-  if($('#itemDIV').hasClass('hidden')) {
-     $(this).html("<i class='fas fa-times'></i> CLOSE");
-    $('#itemDIV').css('display', 'block');
-    $('#itemDIV').removeClass('hidden');
-    $('#itemDIV').addClass('show');
-     } else {
-     $(this).html("<i class='fas fa-plus'></i> ITEM");
-    $('#itemDIV').css('display', 'none');
-  $('#itemDIV').removeClass('show');
-    $('#itemDIV').addClass('hidden');     
-   } 
-});
+        $('#addItem').on('click', function () {
+            if ($('#itemDIV').hasClass('hidden')) {
+                $(this).html("<i class='fas fa-times'></i> CLOSE");
+                $('#itemDIV').css('display', 'block');
+                $('#itemDIV').removeClass('hidden');
+                $('#itemDIV').addClass('show');
+            } else {
+                $(this).html("<i class='fas fa-plus'></i> ITEM");
+                $('#itemDIV').css('display', 'none');
+                $('#itemDIV').removeClass('show');
+                $('#itemDIV').addClass('hidden');
+            }
+        });
 
-</script>
+    </script>
 
 </div>
-
-
-
-
-
-
-
-
