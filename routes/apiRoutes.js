@@ -1,7 +1,7 @@
 var db = require("../models");
 var authController = require('../controllers/authController.js');
 
-module.exports = function (app) {  
+module.exports = function (app, passport) {  
     //POST route for saving an event:
     app.post("/api/events", function (req, res) {
         db.events.create({
@@ -15,18 +15,6 @@ module.exports = function (app) {
             .then(function (dbevents) {
                 res.json(dbevents);
             });
-    });
-    
-    //GET route to get home page:
-    app.get("/home", function(req, res) {
-        var first = req.user.firstname;
-        var last = req.user.lastname;
-        var user_id = req.user.id;
-        db.events.findAll({})
-            .then(function (dbevents) {
-                var events = dbevents;
-             res.render("home", {first: first, last: last, user_id: user_id, events: events});
-        });
     });
 
     //POST route for saving a guest:
@@ -77,7 +65,8 @@ module.exports = function (app) {
         })
     }      
 
-    app.get("/events/:id", async function(req, res) {
+    //GET events page with all the information
+    app.get("/events/:id", isLoggedIn, async function(req, res) {
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
@@ -85,7 +74,7 @@ module.exports = function (app) {
         let event =  await getEvents(idEvent); 
         let guests = await getGuest(idEvent); 
         let items = await getItems(idEvent); 
-        res.render("events", {guests, event, items});
+        res.render("events", {guests, event, items, first: first, last: last, user_id: user_id});
     });
 
     //DELETE route for deleting an event:
@@ -96,6 +85,28 @@ module.exports = function (app) {
             }
         }).then(function (dbevents) {
             res.json(dbevents);
+        });
+    });
+
+    //DELETE route for deleting an guest:
+    app.delete("/events/api/delete/guest", function (req, res) {
+        db.guests.destroy({
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbguest) {
+            res.json(dbguest);
+        });
+    });
+
+    //DELETE route for deleting an item:
+    app.delete("/events/api/delete/item", function (req, res) {
+        db.items.destroy({
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbitem) {
+            res.json(dbitem);
         });
     });
 
@@ -115,5 +126,11 @@ module.exports = function (app) {
             res.json(dbevents);
         });
     });
+
+    function isLoggedIn(req, res, next) {
+        if (req.isAuthenticated())
+            return next();
+        res.redirect('/signin');
+    }
 
 }

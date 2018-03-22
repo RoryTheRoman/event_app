@@ -31,7 +31,18 @@ exports.oneEvent = function (req, res) {
         res.render("events", { first: first, last: last, event: event });
         
     });
-}
+}   
+
+exports.home = function(req, res) {
+        var first = req.user.firstname;
+        var last = req.user.lastname;
+        var user_id = req.user.id;
+        db.events.findAll({})
+            .then(function (dbevents) {
+                var events = dbevents;
+             res.render("home", {first: first, last: last, user_id: user_id, events: events});
+        });
+    }
 
 exports.updateOneEvent = function (req, res) {
             var first = req.user.firstname;
@@ -47,17 +58,6 @@ exports.updateOneEvent = function (req, res) {
                 res.render("update_event", { first: first, last: last, event: event });
             });
         }
-
-// exports.home = function (req, res) {
-//             var first = req.user.firstname;
-//             var last = req.user.lastname;
-//             var user_id = req.user.id;
-//             db.events.findAll({})
-//                 .then(function (dbevents) {
-//                     var events = dbevents;
-//                     res.render('home', { first: first, last: last, user_id: user_id, events: events });
-//                 });
-//         }
 
 exports.update = function (req, res) {
             var first = req.user.firstname;

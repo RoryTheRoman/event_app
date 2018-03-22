@@ -276,13 +276,23 @@ hr.listItems {
     border-top: 1px solid #f8f8f8a2;
 }
 
-.guestbtn {
+.guestbtn, .delete_btn {
     font-size: 15px; 
     text-align: left;
     margin-left: 15px;
     color: #FF4081;
 }
 
+.delete_btn {
+    margin-left: 5px;
+}
+
 p {
     margin: 0 0 5px;
 }
+
+.smallIcon {
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+

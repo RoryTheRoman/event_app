@@ -55,7 +55,7 @@
     <div>
         <h2 class="eventItemInfo">Items Needed 
         <span id="addItem" class="guestbtn">
-            <i class="fas fa-plus guestbtn"></i> ITEM </span> </h2>
+            <i class="fas fa-plus smallIcon"></i> ITEM </span> </h2>
 
         <div id="itemDIV" style="display:none" class="create-event hidden">
             <form class="form-item-event" id="create-item-form" data-id={{event.id}} name="create-item">
@@ -78,7 +78,7 @@
         <ul class="eventsUl">
             {{#each items}}
             <li class="eventsUl">
-                <h4 class="name">{{this.item_name}} </h4>
+                <h4 class="name">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
                 <p class="quantity">Quantity: {{this.quantity}}</p>
             </li>
             <hr class="listItems">
@@ -90,7 +90,7 @@
 
     <div>
         <h2 class="eventGuestInfo">Guests <span id="addGuest" class="guestbtn">
-            <i class="fas fa-plus guestbtn"></i> GUEST <span></h2>
+            <i class="fas fa-plus smallIcon"></i> GUEST <span></h2>
         
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
@@ -115,7 +115,7 @@
         <ul class="eventsUl">
             {{#each guests}}
             <li class="eventsUl">
-                <h4 class="name">{{this.guest_name}} </h4>
+                <h4 class="name">{{this.guest_name}} <span class="delete_btn" data-id={{this.id}} id="delGuest"><i class="fas fa-times smallIcon"></i></span> </h4>
                 <p class="contact">Contact: {{this.contact}} </p>
             </li>
         <hr class="listItems">

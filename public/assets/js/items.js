@@ -22,6 +22,27 @@ $(document).ready(function () {
             });
     });
 
+      //DELETE GUESTS
+  $("#delItem").on("click", function(event) {
+    event.preventDefault();
+    var itemId = $(this).data("id");
+    var id = $("#updEntry").data("id");
+
+    var deleteItem = {
+      id: itemId}
+
+    if (confirm ("Are you sure you want to delete?")){
+    $.ajax("/events/api/delete/item", {
+      type: "DELETE",
+      data: deleteItem
+    }).then(
+      function() {
+        window.location.href = "/events/" + id;
+      }
+    );
+  } 
+  });
+
 
     //on click function for updating an event
     $("#update-item").on("click", function (event) {
