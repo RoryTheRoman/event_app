@@ -10,7 +10,7 @@ $(document).ready(function () {
     var start_time = $("#start-time").val().trim();
     var end_time = $("#end-time").val().trim();
     var user_id = $("#user_id").text();
-
+    
     var newEvent = {
       event_name: event_name,
       event_date: event_date,

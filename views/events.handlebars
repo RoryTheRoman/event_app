@@ -42,7 +42,7 @@
         <h2 class="eventInfo">Event: {{event.event_name}}</h2>
         <h3>Location: {{event.location}}</h3>
         <h3>Date: {{formatDate event.event_date "MM/DD/YYYY"}}</h3>
-        <h3>Time: {{event.start_time}} - {{event.end_time}}</h3>
+        <h3>Time: {{formatTime event.start_time}} - {{formatTime event.end_time}}</h3>
     </div>
 
     <div>
