@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         event_date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
         start_time: {
