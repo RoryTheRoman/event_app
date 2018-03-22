@@ -1,7 +1,7 @@
 var db = require("../models");
 var authController = require('../controllers/authController.js');
 
-module.exports = function (app) {
+module.exports = function (app) {  
     //POST route for saving an event:
     app.post("/api/events", function (req, res) {
         console.log(req.body);
@@ -18,87 +18,55 @@ module.exports = function (app) {
             });
     });
 
-    app.get("/home", function (req, res) {
+    app.get("/home", function(req, res) {
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
         db.events.findAll({})
             .then(function (dbevents) {
                 var events = dbevents;
-                res.render("home", { first: first, last: last, user_id: user_id, events: events });
-            });
+             res.render("home", {first: first, last: last, user_id: user_id, events: events});
+    });
+});
 
-
-        // db.guests.findAll({})
-
-        // function getEvents(){
-        //     db.events.findAll({})
-        //     .then(function (dbevents) {
-        //         var events = dbevents;      
-        //         getGuest(events);
-        //     });
-        // }
-
-        // function getGuest(events){
-        //     db.guests.findAll({})
-        //     .then(function (dbguests,) {
-        //         var guests = dbguests;   
-        //         renderPage(res, dbguests, dbevents);
-        //     });
-        // }
-
-
-
-    function getItems(event, guests, idGuest, res, req) {
-        db.items.findAll({
-            where: {
-                guestId: idGuest
-            }
-        })
-            .then(function (dbitems) {
-                var items = dbitems;
-                res.render("events", { guests, items, event });
-            });
-    }
-
-    function getGuest(event, idEvent, res, req) {
-        db.guests.findAll({
+    function getGuest(idEvent){
+        return db.guests.findAll({
             where: {
                 eventId: idEvent
             }
         })
-            .then(function (dbguests) {
-                var guests = dbguests;
-                var idGuest = req.body.id;
-                //res.render("events", {guests, event});
-                getItems(event, guests, idGuest, res, req);
-            });
     }
+    // function getItems(event, guests, idEvent, res){
+    //     db.items.findAll({
+    //         where: {
+    //             eventId: idEvent
+    //         }
+    //     })
+    //     .then(function (dbitems) {
+    //         var items = dbitems;   
+    //         res.render("events", {guests, items, event});
+    //     });
+    // }
 
-    function getEvents(idEvent, res, req) {
-        db.events.findOne({
+    function getEvents(idEvent){
+        return db.events.findOne({
             where: {
                 id: idEvent
             }
-        }).then(function (dbevent) {
-            var event = dbevent;
-            getGuest(event, idEvent, res, req);
-        });
-    }
+        })
+    }      
 
-
-    app.get("/events/:id", function (req, res) {
-
+    app.get("/events/:id", async function(req, res) {
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
         var idEvent = req.params.id;
+        let event =  await getEvents(idEvent); 
+        let guests = await getGuest(idEvent); 
 
-
-        getEvents(idEvent, res, req);
-
+        res.render("events", {guests, event});
     });
-
+        
     //POST route for saving a guest:
     app.post("/api/guests", function (req, res) {
         db.guests.create({
@@ -106,20 +74,9 @@ module.exports = function (app) {
             contact: req.body.contact,
             eventId: req.body.eventId
         })
-            .then(function (dbguests) {
-                res.json(dbguests);
-            });
-    });
-
-    //POST route for saving a guest:
-    app.post("/api/items", function (req, res) {
-        db.items.create({
-            item_name: req.body.item_name,
-            guestId: req.body.guestId
-        })
-            .then(function (dbitems) {
-                res.json(dbitems);
-            });
+        .then(function (dbguests) {
+            res.json(dbguests);
+        });
     });
 
     //DELETE route for deleting an event:
@@ -144,15 +101,10 @@ module.exports = function (app) {
             start_time: req.body.start_time,
             end_time: req.body.end_time,
         },
-
-            {
-                where: {
-                    id: idEvent
-                }
-            })
-            .then(function (dbevents) {
-                res.json(dbevents);
-            });
+        {where: {id: idEvent}})
+        .then(function (dbevents) {
+            res.json(dbevents);
+        });
     });
 
 }
