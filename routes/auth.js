@@ -20,7 +20,7 @@ module.exports = function(app, passport) {
 
     app.get('/create', isLoggedIn, authController.create);
     app.get('/update/:id', isLoggedIn, authController.update);
-    app.get('/events/:id', isLoggedIn, authController.oneEvent);
+
     app.get('/update_event/:id', isLoggedIn, authController.updateOneEvent);
 
     function isLoggedIn(req, res, next) {

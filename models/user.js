@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
  
     var User = sequelize.define('user', {
- 
+
         id: {
             autoIncrement: true,
             primaryKey: true,
@@ -53,7 +53,5 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: 'CASCADE'
         });
     };
- 
     return User;
- 
 }

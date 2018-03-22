@@ -16,20 +16,20 @@ exports.create = function (req, res) {
     res.render('create', { first: first, last: last, user_id: user_id});
 }
 
-exports.oneEvent = function (req, res) {
-    var first = req.user.firstname;
-    var last = req.user.lastname;
-    var idEvent = req.params.id;
-    db.events.findOne({
-        where: {
-            id: idEvent
-        }
-    }).then(function (data) {
-        var event = data;
-        console.log(event);
-        res.render("events", {first: first, last: last, event: event});
-    });
-}
+// exports.oneEvent = function (req, res) {
+//     var first = req.user.firstname;
+//     var last = req.user.lastname;
+//     var idEvent = req.params.id;
+//     db.events.findOne({
+//         where: {
+//             id: idEvent
+//         }
+//     }).then(function (data) {
+//         var event = data;
+//         console.log(event);
+//         res.render("events", {first: first, last: last, event: event});
+//     });
+// }
 
 exports.updateOneEvent = function (req, res) {
     var first = req.user.firstname;
