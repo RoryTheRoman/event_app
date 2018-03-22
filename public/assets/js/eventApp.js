@@ -108,7 +108,6 @@ $("#update-event-form").on("submit", function (event) {
   );
 });
 
-
 //GET UPDATE PAGE
 $("#update_event").on("click", function (event) {
   var id = $(this).data("id");

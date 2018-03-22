@@ -18,6 +18,18 @@ module.exports = function (app) {
             });
     });
 
+    app.get("/home", function(req, res) {
+        var first = req.user.firstname;
+        var last = req.user.lastname;
+        var user_id = req.user.id;
+
+        db.events.findAll({})
+        .then(function (dbevents) {
+            var events = dbevents;      
+        res.render("home", {first: first, last: last, user_id: user_id, events: events});
+      });
+    });
+
     //POST route for saving a guest:
     app.post("/api/guests", function (req, res) {
         db.guests.create({
