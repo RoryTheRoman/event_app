@@ -27,6 +27,40 @@ module.exports = function (app) {
                 var events = dbevents;
              res.render("home", {first: first, last: last, user_id: user_id, events: events});
     });
+});
+
+
+app.get("/events/:id", function(req, res) {
+
+    var idEvent = req.params.id;
+
+    function findEvent (){
+        db.events.findOne({
+            where: {
+                id: idEvent
+            }
+        }).then(function (dbevent) {
+            var event = dbevent;
+            findGuests (event);
+        });
+    }
+
+    function findGuests (event){
+        db.guests.findAll({
+            where: {
+                eventId: idEvent
+            }
+        }).then(function (dbguests) {
+            var guests = dbguests;
+            renderEventPage(guests, event);
+        });
+    }
+
+    function renderEventPage (guests, event) {
+        res.render("events", {guests, event})
+    }
+
+});
         
         
             // db.guests.findAll({})
@@ -50,48 +84,39 @@ module.exports = function (app) {
         // function renderPage(res, dbguests, dbevents){
         //      res.render("home", {first: first, last: last, user_id: user_id, events: events});
         // }
-    });
+    // });
 
-    app.get("/events/:id", function(req, res) {
-        var first = req.user.firstname;
-        var last = req.user.lastname;
-        var user_id = req.user.id;
-        var idEvent = req.params.id;
+    // app.get("/events/:id", function(req, res) {
+    //      var idEvent = req.params.id;
 
-        function getEvents(){
-            db.events.findOne({
-                where: {
-                    id: idEvent
-                }
-            }).then(function (dbevent) {
-                var event = dbevent;      
-                getGuest(event);
-            });
-        }
+    //     function getEvents(){
+    //         db.events.findOne({
+    //             where: {
+    //                 id: idEvent
+    //             }
+    //         }).then(function (dbevent) {
+    //             var event = dbevent;      
+    //             getGuest(event);
+    //         });
+    //     }
 
-        function getGuest(event){
-            db.guests.findOne({
-                where: {
-                    eventId: idEvent
-                }
-            })
-            .then(function (dbguests,) {
-                var guests = dbguests;   
-                renderPage(res, dbguests, dbevent);
-            });
-        }
+    //     function getGuest(event){
+    //         db.guests.findAll({
+    //             where: {
+    //                 eventId: idEvent
+    //             }
+    //         })
+    //         .then(function (dbguests,) {
+    //             var guests = dbguests;   
+    //             renderPage(guests, event);
+    //         });
+    //     }
 
-        function renderPage(res, dbguests, dbevent){
-             res.render("events", {res, dbguests, dbevent});
-        }
+    //     function renderPage(dbguests, dbevent){
+    //          res.render(rdbguests, dbevent);
+    //     }
         
-    });
-
-
-
-
-
-
+    // });
 
     //POST route for saving a guest:
     app.post("/api/guests", function (req, res) {
@@ -127,11 +152,10 @@ module.exports = function (app) {
             start_time: req.body.start_time,
             end_time: req.body.end_time,
         },
-        {   where: {
-            id: idEvent
-        }})
+        {where: {id: idEvent}})
         .then(function (dbevents) {
             res.json(dbevents);
         });
     });
+
 }
