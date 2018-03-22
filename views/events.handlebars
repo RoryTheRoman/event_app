@@ -101,11 +101,13 @@
 
         <ul class="eventsUl">
             {{#each guests}}
+
             <li class="eventsUl">
                 <h3 class="name">{{this.guest_name}}: {{this.item_name}} </h3>
                 <p class="contact">{{this.contact}} </p>
             </li>
-            {{else}}
+
+        {{else}}
             <p>You have no guests yet. Click the "+ Guest" to add guests!</p>
             {{/each}}
         </ul>

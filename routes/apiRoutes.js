@@ -47,10 +47,7 @@ module.exports = function (app) {
         //     });
         // }
 
-        // function renderPage(res, dbguests, dbevents){
-        //      res.render("home", {first: first, last: last, user_id: user_id, events: events});
-        // }
-    });
+
 
     function getItems(event, guests, idGuest, res, req) {
         db.items.findAll({
@@ -89,11 +86,14 @@ module.exports = function (app) {
         });
     }
 
+
     app.get("/events/:id", function (req, res) {
+
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
         var idEvent = req.params.id;
+
 
         getEvents(idEvent, res, req);
 
@@ -144,6 +144,7 @@ module.exports = function (app) {
             start_time: req.body.start_time,
             end_time: req.body.end_time,
         },
+
             {
                 where: {
                     id: idEvent
@@ -153,4 +154,5 @@ module.exports = function (app) {
                 res.json(dbevents);
             });
     });
+
 }
