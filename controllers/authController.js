@@ -13,68 +13,70 @@ exports.create = function (req, res) {
     var first = req.user.firstname;
     var last = req.user.lastname;
     var user_id = req.user.id;
-    res.render('create', { first: first, last: last, user_id: user_id});
+    res.render('create', { first: first, last: last, user_id: user_id });
 }
 
-// exports.oneEvent = function (req, res) {
-//     var first = req.user.firstname;
-//     var last = req.user.lastname;
-//     var idEvent = req.params.id;
-//     db.events.findOne({
-//         where: {
-//             id: idEvent
-//         }
-//     }).then(function (data) {
-//         var event = data;
-//         console.log(event);
-//         res.render("events", {first: first, last: last, event: event});
-//     });
-// }
-
-exports.updateOneEvent = function (req, res) {
+exports.oneEvent = function (req, res) {
     var first = req.user.firstname;
     var last = req.user.lastname;
-    var updEvent = req.params.id;
+    var idEvent = req.params.id;
     db.events.findOne({
         where: {
-            id: updEvent
+            id: idEvent
         }
     }).then(function (data) {
         var event = data;
         console.log(event);
-        res.render("update_event", {first: first, last: last, event: event});
+        res.render("events", { first: first, last: last, event: event });
+        
     });
 }
+
+exports.updateOneEvent = function (req, res) {
+            var first = req.user.firstname;
+            var last = req.user.lastname;
+            var updEvent = req.params.id;
+            db.events.findOne({
+                where: {
+                    id: updEvent
+                }
+            }).then(function (data) {
+                var event = data;
+                console.log(event);
+                res.render("update_event", { first: first, last: last, event: event });
+            });
+        }
 
 exports.home = function (req, res) {
-    var first = req.user.firstname;
-    var last = req.user.lastname;
-    var user_id = req.user.id;
-    db.events.findAll({})
-    .then(function (dbevents) {
-        var events = dbevents;
-        res.render('home', {first: first, last: last, user_id: user_id, events: events});
-    });
-}
+            var first = req.user.firstname;
+            var last = req.user.lastname;
+            var user_id = req.user.id;
+            db.events.findAll({})
+                .then(function (dbevents) {
+                    var events = dbevents;
+                    res.render('home', { first: first, last: last, user_id: user_id, events: events });
+                });
+        }
 
 exports.update = function (req, res) {
-    var first = req.user.firstname;
-    var last = req.user.lastname;
-    var user_id = req.user.id;
-    var toUpdate = req.params.id;
-    db.events.update({
-        where: {
-            id: toUpdate
+            var first = req.user.firstname;
+            var last = req.user.lastname;
+            var user_id = req.user.id;
+            var toUpdate = req.params.id;
+            db.events.update({
+                where: {
+                    id: toUpdate
+                }
+            }).then(function (data) {
+                ß
+                var event = data;
+                console.log(event);
+                res.render("events", { first: first, last: last, user_id: user_id, event: event });
+            });
         }
-    }).then(function (data) {ß
-        var event = data;
-        console.log(event);
-        res.render("events", {first: first, last: last, user_id: user_id, event: event});
-    });
-}
 
 exports.logout = function (req, res) {
-    req.session.destroy(function (err) {
-        res.redirect('/');
-    });
-}
+            req.session.destroy(function (err) {
+                res.redirect('/');
+            });
+        }

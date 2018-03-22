@@ -52,38 +52,49 @@ module.exports = function (app) {
         // }
     });
 
+    function getGuest(event, idEvent, res){
+        db.guests.findAll({
+            where: {
+                eventId: idEvent
+            }
+        })
+        .then(function (dbguests) {
+            var guests = dbguests;   
+            res.render("events", {guests, event});
+            //getGuest(event, guests, idEvent, res);
+        });
+    }
+
+    function getItems(event, guests, idEvent, res){
+        db.items.findAll({
+            where: {
+                eventId: idEvent
+            }
+        })
+        .then(function (dbitems) {
+            var items = dbitems;   
+            res.render("events", {guests, items, event});
+        });
+    }
+
+    function getEvents(idEvent,res){
+        db.events.findOne({
+            where: {
+                id: idEvent
+            }
+        }).then(function (dbevent) {
+            var event = dbevent;      
+            getGuest(event, idEvent, res);
+        });
+    }      
+
     app.get("/events/:id", function(req, res) {
         var first = req.user.firstname;
         var last = req.user.lastname;
         var user_id = req.user.id;
         var idEvent = req.params.id;
 
-        function getEvents(){
-            db.events.findOne({
-                where: {
-                    id: idEvent
-                }
-            }).then(function (dbevent) {
-                var event = dbevent;      
-                getGuest(event);
-            });
-        }
-
-        function getGuest(event){
-            db.guests.findOne({
-                where: {
-                    eventId: idEvent
-                }
-            })
-            .then(function (dbguests,) {
-                var guests = dbguests;   
-                renderPage(res, dbguests, dbevent);
-            });
-        }
-
-        function renderPage(res, dbguests, dbevent){
-             res.render("events", {res, dbguests, dbevent});
-        }
+        getEvents(idEvent, res);
         
     });
 
