@@ -50,19 +50,26 @@
         <p>Time: {{formatTime event.start_time}} - {{formatTime event.end_time}}</p>
     </div>
 
+        <hr class="listItems">
+
     <div>
         <h2 class="eventItemInfo">Items Needed 
         <span id="addItem" class="guestbtn">
             <i class="fas fa-plus guestbtn"></i> ITEM </span> </h2>
 
         <div id="itemDIV" style="display:none" class="create-event hidden">
-            <form class="form-create-event" id="create-item-form" data-id={{guest.id}} name="create-item" method="POST" action="/items">
+            <form class="form-item-event" id="create-item-form" data-id={{event.id}} name="create-item">
                 <h2 class="form-event-heading">Item</h2>
-                <label for="item-name">
+                <label for="item_name">
                     <h5>What is the item?</h5>
                 </label>
-                <input type="text" class="form-control" id="item-name" name="item-name" placeholder="Name of Item" required="" autofocus=""
-                />
+                <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Name of Item" required="" autofocus=""/>
+
+                <h2 class="form-event-heading">Quantity</h2>
+                <label for="quantity">
+                    <h5>How many are needed?</h5>
+                </label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Number Needed" required="" autofocus=""/>
 
                 <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>
             </form>
@@ -71,8 +78,10 @@
         <ul class="eventsUl">
             {{#each items}}
             <li class="eventsUl">
-                <h3 class="name">{{this.name}} </h3>
+                <h4 class="name">{{this.item_name}} </h4>
+                <p class="quantity">Quantity: {{this.quantity}}</p>
             </li>
+            <hr class="listItems">
             {{else}}
             <p>You have no items yet. Click the "+ Item" to add an item!</p>
             {{/each}}
@@ -80,12 +89,12 @@
     </div>
 
     <div>
-        <h2 class="eventGuestInfo">Your Guests <span id="addGuest" class="guestbtn">
+        <h2 class="eventGuestInfo">Guests <span id="addGuest" class="guestbtn">
             <i class="fas fa-plus guestbtn"></i> GUEST <span></h2>
         
 
         <div id="inputDIV" style="display:none" class="create-event hidden">
-            <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest" method="POST" action="/#">
+            <form class="form-guest-event" id="create-guest-form" data-id={{event.id}} name="create-guest">
                 <h2 class="form-event-heading">Input Guest Information</h2>
                 <label for="guest-name">
                     <h5>What is the name of the guest you will like to add?</h5>
@@ -105,12 +114,11 @@
 
         <ul class="eventsUl">
             {{#each guests}}
-
             <li class="eventsUl">
                 <h4 class="name">{{this.guest_name}} </h4>
                 <p class="contact">Contact: {{this.contact}} </p>
             </li>
-
+        <hr class="listItems">
         {{else}}
             <p>You have no guests yet. Click the "+ Guest" to add guests!</p>
             {{/each}}

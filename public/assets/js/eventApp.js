@@ -30,29 +30,6 @@ $(document).ready(function () {
     );
   });
 
-//CREATE GUEST
-$("#create-guest-form").on("submit", function (event) {
-  event.preventDefault();
-
-  var eventId = $(this).data("id");
-  var guest_name = $("#guest_name").val().trim();
-  var contact = $("#contact").val().trim();
-
-  var newGuest = {
-    guest_name: guest_name,
-    contact: contact,
-    eventId: eventId
-  };
-
-  $.ajax("/api/guests", {
-    type: "POST",
-    data: newGuest
-  }).then(
-    function () {
-      window.location.href = "/events/" + id;
-    }
-  );
-});
 
 //DELETE EVENT
   $("#delEntry").on("click", function(event) {
