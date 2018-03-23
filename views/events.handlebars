@@ -56,7 +56,7 @@
                     {{#if status}}
                     <div class="form-input line">
                         <input type="checkbox" class="upItemStatus" checked={{this.status}} data-status={{this.status}} data-id={{this.id}} name="item">
-                        <label class="label-control" for="item">
+                        <label class="label-control item_box" for="item">
                         <h4 class="name itemName">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
                         </label>
                         <p class="quantity">Quantity: {{this.quantity}}</p>
@@ -65,7 +65,7 @@
                     {{else}}
                     <div class="form-input line">
                         <input type="checkbox" class="upItemStatus" data-status={{this.status}} data-id={{this.id}} name="item">
-                        <label class="label-control" for="item">
+                        <label class="label-control item_box" for="item">
                         <h4 class="name itemName">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
                         </label>
                         <p class="quantity">Quantity: {{this.quantity}}</p>
