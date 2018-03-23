@@ -297,14 +297,37 @@ p {
 }
 
 .modal-dialog {
-    width: 75%;
+    width: 50%;
 }
 
-.form-item-event {
-    padding: 0 10px;
-}
-
-#myModal.form-event-heading {
+#create-item-form {
     margin: 0px;
+    padding: 10px;
+}
+
+.form-item-heading {
+    margin: 0px;
+    font-size: 18px;
+}
+
+.first {
+    margin-top: 10px;
+}
+
+/* #create-item-form.btn-group-lg>.btn, #create-item-form.btn-lg {
+    font-size: 13px;
+} */
+
+#create-item-form.submitGuest {
+    width: 20%;
+}
+
+#create-item-form.create-event {
+    padding: 0;
+}
+
+#closeItem {
+    float: right;
+    padding: 10px;
 }
 

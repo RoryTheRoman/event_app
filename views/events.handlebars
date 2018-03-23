@@ -54,29 +54,31 @@
 
     <div>
         <h2 class="eventItemInfo">Items Needed 
-        <span id="addItem" class="guestbtn">
+        <span class="guestbtn addItem showItem">
             <i class="fas fa-plus smallIcon"></i> ITEM </span> </h2>
 
 
             <div id="itemDIV" role="dialog" style="display:none" class="create-event none">
-                <div class="modal-dialog">
+                <div id="myModal" class="modal-dialog">
                     <div class="modal-content">
                         
                     <div>
+                        <div id="closeItem" class="guestbtn addItem closeItem"> </div>
                         <form class="form-item-event" id="create-item-form" data-id={{event.id}} name="create-item">
-                            <h2 class="form-event-heading">Item</h2>
+                            <h2 class="form-item-heading first">Item</h2>
+                            <div class="form-item-heading">
                             <label for="item_name">
                                 <h5>What is the item?</h5>
                             </label>
                             <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Name of Item" required="" autofocus=""/>
-
-                            <h2 class="form-event-heading">Quantity</h2>
+                            
+                            <h2 class="form-item-heading">Quantity</h2>
                             <label for="quantity">
                                 <h5>How many are needed?</h5>
                             </label>
                             <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Number Needed" required="" autofocus=""/>
 
-                            <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>
+                            <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit</button>
                         </form>
                     </div>
 
@@ -146,7 +148,7 @@
                 $('#inputDIV').removeClass('hidden');
                 $('#inputDIV').addClass('show');
             } else {
-                $(this).html("<i class='fas fa-plus'></i> GUEST");
+                $(this).html("<i class='fas fa-plus smallIcon'></i> GUEST");
                 $('#inputDIV').css('display', 'none');
                 $('#inputDIV').removeClass('show');
                 $('#inputDIV').addClass('hidden');
@@ -161,14 +163,16 @@
             }
         });
 
-        $('#addItem').on('click', function () {
+        $('.addItem').on('click', function () {
             if ($('#itemDIV').hasClass('none')) {
-                $(this).html("<i class='fas fa-times'></i> CLOSE");
+                $(".closeItem").html("<i class='fas fa-times'></i>");
+                $(".showItem").html("");
                 $('#itemDIV').css('display', 'block');
                 $('#itemDIV').removeClass('none');
                 $('#itemDIV').addClass('block');
             } else {
-                $(this).html("<i class='fas fa-plus'></i> ITEM");
+                $('.showItem').html("<i class='fas fa-plus smallIcon'></i> ITEM");
+                $(".closeItem").html("");
                 $('#itemDIV').css('display', 'none');
                 $('#itemDIV').removeClass('block');
                 $('#itemDIV').addClass('none');
