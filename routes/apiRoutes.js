@@ -10,7 +10,7 @@ module.exports = function (app, passport) {
             event_date: req.body.event_date,
             start_time: req.body.start_time,
             end_time: req.body.end_time,
-            userId: req.body.userIds
+            userId: req.body.userId
         })
         .then(function (dbevents) {
             res.json(dbevents);
@@ -124,6 +124,25 @@ module.exports = function (app, passport) {
         {where: {id: idEvent}})
         .then(function (dbevents) {
             res.json(dbevents);
+        });
+    });
+
+    //PUT route for updating an event:
+    app.put("/api/updateItem/:id", function (req, res) {
+        var itemId = req.body.itemId;
+        var status= req.body.status;
+
+        console.log("status");
+        console.log(status);
+        console.log("item");
+        console.log(itemId);
+
+        db.items.update({
+            status: status,
+        },
+        {where: {id: itemId}})
+        .then(function (dbitemStatus) {
+            res.json(dbitemStatus);
         });
     });
 

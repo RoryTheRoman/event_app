@@ -44,52 +44,60 @@ $(document).ready(function () {
   });
 
 
-  $(".upItemStatus").on("click", function(event) {
+  $("#upItemStatus").on("click", function(event) {
     var id = $("#updEntry").data("id");
     var itemId = $(this).data("id");
-    var status = $(this).data("status");
+    var status;
+    var itemStatus = $(this).data("status");
 
-    var updatedItem = {
-        id: itemId,
-        completed: status
+    console.log("itemStatus");
+    console.log(itemStatus);
+
+    if (itemStatus === false) {
+        status = true;
+        $(this).data("status", status); 
+        $(this).attr("checked"); 
+
+    } 
+    else {
+        status = false;
+        $(this).data("status", status); 
     }
+ 
+    var updatedItem = {
+        itemId: itemId,
+        status: status
+    }
+
+    console.log("updatedItem");
+    console.log(updatedItem);
+ 
 
     $.ajax("/api/updateItem/" + id, {
       type: "PUT",
       data: updatedItem
     }).then(
       function() {
-        window.location.href = "/events/" + id;
+        // window.location.href = "/events/" + id;
       }
     );
   });
 
-    //on click function for updating an event
-    $("#update-item").on("click", function (event) {
-        var id = $(this).data("id");
+});
 
-        event.preventDefault();
 
-        // Getting jQuery references of new event
-        var item_name = $("#item-name").val().trim();
-
-        // Constructing a event object to hand to the database
-        var updatedItem = {
-            item_name: item_name,
-            guestId: id
-        };
-
-        // Send the PUT request.
-        $.ajax("/api/items/" + id, {
-            type: "PUT",
-            data: updatedItem
-        }).then(
-            function () {
-                console.log("updated item");
-                // Reload the page to get the updated list
-                window.location.reload();
-
-            })
-    });
-
+$('.addGuest').on('click', function () {
+    if ($('#inputDIV').hasClass('none')) {
+        $('.closeGuest').html("<i class='fas fa-times'></i>");
+        $(".showGuest").html("");
+        $('#inputDIV').css('display', 'block');
+        $('#inputDIV').removeClass('none');
+        $('#inputDIV').addClass('block');
+    } else {
+        $('.showGuest').html("<i class='fas fa-plus smallIcon'></i> GUEST");
+        $(".closeGuest").html("");
+        $('#inputDIV').css('display', 'none');
+        $('#inputDIV').removeClass('block');
+        $('#inputDIV').addClass('none');
+    }
 });

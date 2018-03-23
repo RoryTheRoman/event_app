@@ -8,6 +8,7 @@ body {
     text-align: center;
     background-position: center;
     background-size: cover;
+    font-family: 'Open Sans', sans-serif;
 }
 
 hr {
@@ -17,16 +18,11 @@ hr {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Arvo', serif;
+    font-family: 'Cormorant Semi-Bold', serif;
 }
-
 h1 {
     font-weight: 700px;
     font-size: 5em;
-    margin-bottom: 20px;
-}
-
-h4 {
     margin-bottom: 20px;
 }
 
@@ -44,7 +40,7 @@ h3 {
 }
 
 .logInHome {
-    margin-top: 4%;
+    margin-top: 20px;
 }
 
 .navbar {
