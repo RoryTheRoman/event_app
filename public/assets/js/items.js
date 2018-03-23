@@ -49,6 +49,13 @@ $(document).ready(function () {
     var itemId = $(this).data("id");
     var status;
     var itemStatus = $(this).data("status");
+    let $this = $(this);
+    
+    if ($this.prop( "checked" )) {
+        $this.closest('.line').addClass('completed')
+    } else {
+        $this.closest('.line').removeClass('completed')
+    }
 
     if (itemStatus === false) {
         status = true;
@@ -67,7 +74,6 @@ $(document).ready(function () {
       data: updatedItem
     }).then(
       function() {
-        // window.location.href = "/events/" + id;
       }
     );
   });

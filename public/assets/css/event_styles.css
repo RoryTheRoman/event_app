@@ -328,4 +328,7 @@ p {
     transform: translate(-50%, -50%);
 }
 
-
+.completed h4 {
+    color: gray;
+    text-decoration: line-through;
+}
