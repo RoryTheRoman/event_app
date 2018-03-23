@@ -56,7 +56,7 @@
                 <div class="form-input line">
                     <input type="checkbox" id="upItemStatus" data-id={{this.id}} name="item">
                     <label class="label-control" for="item">
-                        <h4 class="name">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
+                        <h4 class="name itemName">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
                     </label>
                     <p class="quantity">Quantity: {{this.quantity}}</p>
                 </div>
@@ -101,7 +101,6 @@
                 <h4 class="name">{{this.guest_name}} <span class="delete_btn" data-id={{this.id}} id="delGuest"><i class="fas fa-times smallIcon"></i></span> </h4>
                 <p class="contact">Contact: {{this.contact}} </p>
             </li>
-            <hr class="listItems">
             {{else}}
             <p>You have no guests yet. Click the "+ Guest" to add guests!</p>
             {{/each}}

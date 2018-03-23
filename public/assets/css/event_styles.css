@@ -202,6 +202,10 @@ ul.eventsUl{
     color: #FF8CB3;
 }
 
+.itemName {
+    margin-bottom: 0px;
+}
+
 h2 {
     color: #7F2040;
 }
