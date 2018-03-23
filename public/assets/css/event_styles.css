@@ -296,3 +296,15 @@ p {
     margin-bottom: 3px;
 }
 
+.modal-dialog {
+    width: 75%;
+}
+
+.form-item-event {
+    padding: 0 10px;
+}
+
+#myModal.form-event-heading {
+    margin: 0px;
+}
+

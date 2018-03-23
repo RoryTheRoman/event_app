@@ -57,35 +57,48 @@
         <span id="addItem" class="guestbtn">
             <i class="fas fa-plus smallIcon"></i> ITEM </span> </h2>
 
-        <div id="itemDIV" style="display:none" class="create-event hidden">
-            <form class="form-item-event" id="create-item-form" data-id={{event.id}} name="create-item">
-                <h2 class="form-event-heading">Item</h2>
-                <label for="item_name">
-                    <h5>What is the item?</h5>
-                </label>
-                <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Name of Item" required="" autofocus=""/>
 
-                <h2 class="form-event-heading">Quantity</h2>
-                <label for="quantity">
-                    <h5>How many are needed?</h5>
-                </label>
-                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Number Needed" required="" autofocus=""/>
+            <div id="itemDIV" role="dialog" style="display:none" class="create-event none">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        
+                    <div>
+                        <form class="form-item-event" id="create-item-form" data-id={{event.id}} name="create-item">
+                            <h2 class="form-event-heading">Item</h2>
+                            <label for="item_name">
+                                <h5>What is the item?</h5>
+                            </label>
+                            <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Name of Item" required="" autofocus=""/>
 
-                <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>
-            </form>
+                            <h2 class="form-event-heading">Quantity</h2>
+                            <label for="quantity">
+                                <h5>How many are needed?</h5>
+                            </label>
+                            <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Number Needed" required="" autofocus=""/>
+
+                            <button class="btn btn-lg btn-primary btn-block submitGuest" type="submit">Submit Item</button>
+                        </form>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+        <div class="form-group items">
+            {{#each items}}
+                <div class="form-input line">
+                    <input type="checkbox" id="upItemStatus" data-id={{this.id}} name="item">
+                    <label class="label-control" for="item">
+                        <h4 class="name">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
+                    </label>
+                    <p class="quantity">Quantity: {{this.quantity}}</p>
+                </div>
+            {{else}}
+                <p>You have no items yet. Click the "+ Item" to add an item!</p>
+            {{/each}}
+            <hr class="listItems">
         </div>
 
-        <ul class="eventsUl">
-            {{#each items}}
-            <li class="eventsUl">
-                <h4 class="name">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
-                <p class="quantity">Quantity: {{this.quantity}}</p>
-            </li>
-            <hr class="listItems">
-            {{else}}
-            <p>You have no items yet. Click the "+ Item" to add an item!</p>
-            {{/each}}
-        </ul>
     </div>
 
     <div>
@@ -140,19 +153,27 @@
             }
         });
 
+        $('#upItemStatus').on('click', function () {
+            if (this.checked = true) {
+                this.removeAttribute("checked"); 
+            } else {
+                this.setAttribute("checked", "checked");
+            }
+        });
+
         $('#addItem').on('click', function () {
-            if ($('#itemDIV').hasClass('hidden')) {
+            if ($('#itemDIV').hasClass('none')) {
                 $(this).html("<i class='fas fa-times'></i> CLOSE");
                 $('#itemDIV').css('display', 'block');
-                $('#itemDIV').removeClass('hidden');
-                $('#itemDIV').addClass('show');
+                $('#itemDIV').removeClass('none');
+                $('#itemDIV').addClass('block');
             } else {
                 $(this).html("<i class='fas fa-plus'></i> ITEM");
                 $('#itemDIV').css('display', 'none');
-                $('#itemDIV').removeClass('show');
-                $('#itemDIV').addClass('hidden');
+                $('#itemDIV').removeClass('block');
+                $('#itemDIV').addClass('none');
             }
-        });
+        });        
 
     </script>
 
