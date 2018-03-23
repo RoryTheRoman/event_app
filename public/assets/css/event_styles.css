@@ -296,29 +296,18 @@ p {
     margin-bottom: 3px;
 }
 
-.modal-dialog {
-    width: 50%;
-}
-
-#create-item-form {
+#create-item-form,  #create-guest-form{
     margin: 0px;
     padding: 10px;
+    padding-top: 22px;
 }
 
-.form-item-heading {
+.form-heading {
     margin: 0px;
     font-size: 18px;
 }
 
-.first {
-    margin-top: 10px;
-}
-
-/* #create-item-form.btn-group-lg>.btn, #create-item-form.btn-lg {
-    font-size: 13px;
-} */
-
-#create-item-form.submitGuest {
+#create-item-form.submitGuest, #create-guest-form.submitGuest {
     width: 20%;
 }
 
@@ -326,8 +315,17 @@ p {
     padding: 0;
 }
 
-#closeItem {
+#close {
     float: right;
     padding: 10px;
 }
+
+#itemDIV, #inputDIV {
+    z-index: 1010;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 
