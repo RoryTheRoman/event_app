@@ -44,6 +44,26 @@ $(document).ready(function () {
   });
 
 
+  $(".upItemStatus").on("click", function(event) {
+    var id = $("#updEntry").data("id");
+    var itemId = $(this).data("id");
+    var status = $(this).data("status");
+
+    var updatedItem = {
+        id: itemId,
+        completed: status
+    }
+
+    $.ajax("/api/updateItem/" + id, {
+      type: "PUT",
+      data: updatedItem
+    }).then(
+      function() {
+        window.location.href = "/events/" + id;
+      }
+    );
+  });
+
     //on click function for updating an event
     $("#update-item").on("click", function (event) {
         var id = $(this).data("id");

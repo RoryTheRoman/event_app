@@ -10,11 +10,11 @@ module.exports = function (app, passport) {
             event_date: req.body.event_date,
             start_time: req.body.start_time,
             end_time: req.body.end_time,
-            userId: req.body.userId
+            userId: req.body.userIds
         })
-            .then(function (dbevents) {
-                res.json(dbevents);
-            });
+        .then(function (dbevents) {
+            res.json(dbevents);
+        });
     });
 
     //POST route for saving a guest:

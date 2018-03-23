@@ -296,3 +296,36 @@ p {
     margin-bottom: 3px;
 }
 
+#create-item-form,  #create-guest-form{
+    margin: 0px;
+    padding: 10px;
+    padding-top: 22px;
+}
+
+.form-heading {
+    margin: 0px;
+    font-size: 18px;
+}
+
+#create-item-form.submitGuest, #create-guest-form.submitGuest {
+    width: 20%;
+}
+
+#create-item-form.create-event {
+    padding: 0;
+}
+
+#close {
+    float: right;
+    padding: 10px;
+}
+
+#itemDIV, #inputDIV {
+    z-index: 1010;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
