@@ -44,34 +44,23 @@ $(document).ready(function () {
   });
 
 
-  $("#upItemStatus").on("click", function(event) {
+  $(".upItemStatus").on("click", function(event) {
     var id = $("#updEntry").data("id");
     var itemId = $(this).data("id");
     var status;
     var itemStatus = $(this).data("status");
 
-    console.log("itemStatus");
-    console.log(itemStatus);
-
     if (itemStatus === false) {
         status = true;
-        $(this).data("status", status); 
-        $(this).attr("checked"); 
-
     } 
     else {
         status = false;
-        $(this).data("status", status); 
     }
  
     var updatedItem = {
         itemId: itemId,
         status: status
     }
-
-    console.log("updatedItem");
-    console.log(updatedItem);
- 
 
     $.ajax("/api/updateItem/" + id, {
       type: "PUT",

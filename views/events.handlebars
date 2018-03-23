@@ -53,17 +53,24 @@
             <i class="fas fa-plus smallIcon"></i> ITEM </span> </h2>
         <div class="form-group items">
             {{#each items}}
-                <div class="form-input line">
-                    {{#if this.status}}
-                        <input type="checkbox" id="upItemStatus" checked={{this.status}} data-status={{this.status}} data-id={{this.id}} name="item">
-                    {{else}}
-                        <input type="checkbox" id="upItemStatus" data-status={{this.status}} data-id={{this.id}} name="item">
-                    {{/if}}
-                    <label class="label-control" for="item">
+                    {{#if status}}
+                    <div class="form-input line">
+                        <input type="checkbox" class="upItemStatus" checked={{this.status}} data-status={{this.status}} data-id={{this.id}} name="item">
+                        <label class="label-control" for="item">
                         <h4 class="name itemName">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
-                    </label>
-                    <p class="quantity">Quantity: {{this.quantity}}</p>
-                </div>
+                        </label>
+                        <p class="quantity">Quantity: {{this.quantity}}</p>
+                    </div>
+
+                    {{else}}
+                    <div class="form-input line">
+                        <input type="checkbox" class="upItemStatus" data-status={{this.status}} data-id={{this.id}} name="item">
+                        <label class="label-control" for="item">
+                        <h4 class="name itemName">{{this.item_name}} <span class="delete_btn" data-id={{this.id}} id="delItem"><i class="fas fa-times smallIcon"></i></span> </h4> 
+                        </label>
+                        <p class="quantity">Quantity: {{this.quantity}}</p>
+                    </div>                        
+                    {{/if}}
             {{else}}
                 <p>You have no items yet. Click the "+ Item" to add an item!</p>
             {{/each}}
