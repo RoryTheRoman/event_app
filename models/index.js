@@ -10,7 +10,7 @@ var db = {};
 var connection;
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else
+}
 var express= require("express");
 var app= express();
 var bodyParser= require("body-parser");
